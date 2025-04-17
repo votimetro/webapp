@@ -1,4 +1,14 @@
+<div align="center">
+
+<img src="src/images/favicon/favicon-96x96.png" align="center"/>
+
 # Votímetro
+
+**Responda a perguntas simples sobre política e economia para saber qual partido mais se alinha com as suas opiniões.**
+
+</div>
+
+<div align="center">
 
 As respostas dos partidos são baseadas na avaliação da equipa que elaborou inicialmente o teste tendo em conta os conteúdos dos programas mas recentes, posições públicas passadas, e a ideologia de cada partido.
 
