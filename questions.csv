@@ -1,0 +1,61 @@
+pergunta,type,theme,ps,ad,chega,il,cdu,livre,pan,be,adn,rir,jpp,nova,pctp,volt,multiplier,short
+"A gestão privada tende a ser mais eficiente que a pública, pelo que os cuidados de saúde devem ser prestados por privados com financiamento público.",económico,saúde,-1,1,2,2,-2,-2,0,-2,2,0,0,1,-2,-1,1,1
+"As Parcerias Público-Privadas não são um instrumento útil para o País, mesmo que sejam bem negociadas e fiscalizadas.",económico,público - privado,-1,-2,-2,-2,2,-1,0,2,-2,0,-1,-2,2,-1,-1,0
+Os subsídios de desemprego generosos desincentivam a procura de trabalho e a criação de empresas e acabam frequentemente por causar mais danos do que benefícios no longo prazo.,económico,mercado de trabalho,-1,1,1,1,-2,-2,-1,-2,1,-1,0,1,-2,-1,1,1
+Existem várias infraestruturas e empresas que devem permanecer públicas por serem estrategicas para a soberania do país.,económico,público - privado,2,1,-1,-2,2,2,1,2,1,2,2,-1,2,1,-1,0
+"É crucial que a trajetória da dívida pública seja controlada, mesmo que isso implique cortes no investimento público, salários públicos e nas despesas sociais.",económico,política fiscal,0,1,0,2,-2,-1,0,-2,-1,-1,0,2,-2,1,1,0
+"Reduzir proteção laboral daria mais incentivo à contratação, dinamizando a economia e a criação de emprego",económico,mercado de trabalho,-1,0,0,2,-2,-2,-1,-2,-1,-1,0,1,-2,1,1,0
+"O governo deve utilizar incentivos fiscais para influenciar decisões de consumo ou investimento com fins estratégicos, mesmo que isso resulte num sistema fiscal mais complexo.",económico,política fiscal,1,0,-1,-2,2,2,1,2,-1,1,1,-2,2,0,-1,0
+O governo deve usar impostos e regulações ambientais para combater as alterações climáticas.,económico,regulação,2,1,-1,-2,1,2,2,2,-2,1,1,-1,2,2,-1,1
+"A regulação económica protege os consumidores e trabalhadores, mas é frequentemente excessiva, sufocando a economia e o empreendedorismo.",económico,regulação,-1,1,2,2,-2,-1,-1,-2,1,0,0,1,-2,1,1,1
+"Em geral, o setor privado toma melhores decisões de investimento do que o Estado, que raramente sabe onde aplicar recursos eficazmente.",económico,público - privado,-2,-1,1,2,-2,-2,-1,-2,1,0,0,1,-2,-1,1,0
+O IRS devia ser menos progressivo para atrair e reter pessoas talentosas com rendimentos mais elevados e melhores qualificações.,económico,política fiscal,-2,-1,1,2,-2,-2,-2,-2,0,-2,-1,1,-2,-2,1,0
+"Em regra, reduzir o IRC tem poucos impactos positivos no investimento e na competitividade internacional da economia.",económico,política fiscal,1,-1,-1,-2,2,2,-1,2,-1,0,-1,-2,2,-1,-1,1
+Grandes heranças devem ser tributadas porque os herdeiros não têm mérito em receber esse rendimento.,económico,política fiscal,0,-1,-2,-2,2,2,1,2,0,0,0,-2,2,2,-1,0
+Os subsídios dirigidos aos mais necessitados podem muitas vezes criar dependência do Estado e ser contraproducentes no longo prazo.,económico,política fiscal,-2,-1,1,0,-2,-2,-2,-2,1,-2,-1,0,-2,-2,1,1
+"Em regra, à medida que aumenta a carga fiscal, a actividade económica é cada vez mais desincentivada.",económico,política fiscal,1,2,2,2,-2,-1,1,-2,2,1,1,2,-2,1,1,0
+"Na maioria das circunstâncias, o comércio livre melhora o bem-estar de todos os paises envolvidos.",económico,comércio internacional,1,2,-1,2,-1,0,1,-1,0,1,1,1,-2,2,1,1
+"A economia europeia continua demasiado fragmentada e deverá convergir para um verdadeiro mercado único, a fim de ser competitiva com os Estados Unidos e a China.",económico,economia europeia,1,1,-2,2,-1,1,0,-2,-2,0,1,-1,-2,2,1,0
+"A União Europeia deve ter em conta considerações geopolíticas e estratégicas em vez de negociar livremente com todos os países, independentemente dos seus valores e políticas.",económico,comércio internacional,1,0,0,-1,1,1,1,2,1,1,1,0,2,1,-1,0
+"Se uma indústria nacional anteriormente forte sofrer com a concorrência internacional, o Estado deverá apoiar ou protegê-la.",económico,comercio internacional,0,-1,1,-2,2,1,0,1,1,0,0,0,2,-1,-1,1
+"Trabalhar e criar empresas em qualquer país da UE devia ser mais fácil, mesmo que isso implicasse abdicar de algum controlo sobre as leis económicas e laborais nacionais.",económico,economia europeia,0,1,-1,2,-2,1,1,-1,-2,0,0,0,-2,2,1,0
+O uso recreativo da canábis deveria ser proibido.,social,liberdades pessoais,-1,1,2,-2,1,-2,-2,-2,2,-1,1,2,1,-2,-1,1
+A prostituição deveria ser legalizada e regulamentada,social,liberdade pessoais,0,-1,-2,2,-1,2,1,2,-2,0,0,-2,-2,2,1,0
+A eutanásia deveria ser proibida.,social,liberdade pessoais,-2,1,2,-2,1,-2,-2,-2,1,0,0,2,1,-2,-1,0
+"As sociedades deveriam ter mais em conta o bem-estar dos animais, mesmo quando isso ameaça tradiçôes nacionais.",social,liberdade pessoais,1,-1,-2,0,-1,2,2,2,-1,1,0,-2,-1,2,1,0
+"É fundamental que as escolas eduquem as crianças sobre a diversidade da experiência humana — incluindo questões como discriminação racial, de género ou sexual — para construir uma sociedade mais justa e empática.",social,liberdade pessoais,1,0,-2,0,1,2,2,2,-2,1,0,-2,-1,2,1,0
+"Não basta atingir igualdade de oportunidade entre sexos e etnias, é necessário garantir a igualdade de resultados, nomeadamente através de quotas permanentes no sector público e privado.",social,liberdade pessoais,1,0,-2,-1,1,2,1,2,-2,-1,-1,-2,1,1,1,1
+A religião deve ser mantida totalmente fora das escolas públicas,social,religião,1,0,-2,0,1,2,1,2,-2,1,1,-2,2,1,1,1
+O Estado deve ser tolerante em relação a religiões minoritárias no país.,social,religião,2,1,-1,2,2,2,2,2,-1,2,2,-1,2,2,1,0
+"A Igreja desempenha um papel positivo e importante na sociedade, logo não deve pagar impostos.",social,religião,0,1,2,-1,-2,-2,-1,-2,-1,0,0,2,-2,-2,-1,0
+Ter uma religião dominante e culturalmente relevante é crucial para a coesão social de um país.,social,religião,-1,0,2,-2,-2,-2,-2,-2,2,0,0,2,-2,-2,-1,1
+Ter comunidades no país com culturas diferentes enriquece sempre a sociedade sem pôr em causa a cultura nacional.,social,imigração,1,0,-2,1,1,2,1,2,-2,1,0,-2,1,1,1,1
+"A imigração deve ser fácil, pois a grande maioria dos imigrantes procura construir uma vida melhor para si, em harmonia com a população nativa e porque contribuem positivamente para o país.",social,imigração,1,-1,-2,1,1,2,1,2,-2,1,0,-1,1,1,1,1
+"Não é correto estigmatizar um grupo social, mesmo que uma minoria desse grupo esteja associada a comportamentos impróprios ou ilegais.",social,imigração,2,1,-2,1,2,2,2,2,-1,2,2,-1,2,2,1,0
+"Os imigrantes devem ser obrigados a aprender a língua do país de acolhimento, mesmo que cumpram as suas leis.",social,imigração,-1,0,2,-1,-1,-2,-1,-2,1,0,0,2,0,-1,-1,0
+Os imigrantes não devem ter os mesmos direitos legais e cívicos que a população nativa.,social,imigração,-1,0,2,-1,-2,-2,-2,-2,1,-1,-1,2,-1,-1,-1,0
+"Investir em avanços tecnológicos (como fontes de energia limpa, eficiência energética e veículos eléctricos) é a melhor forma de combater as alterações climáticas e proteger o ambiente, e não reduzir o consumo.",social,tecnologia,1,1,0,2,-1,-1,-1,-1,0,0,1,0,-1,2,1,1
+O impacto social das redes sociais é mais negativo do que positivo.,social,tecnologia,0,1,-2,-2,2,-1,-1,0,-2,0,1,-2,2,-1,-1,0
+Os custos sociais da inteligência artificial ​​excederão em muito os benefícios.,social,tecnologia,-1,-1,0,-2,1,-1,-1,0,0,0,-1,-1,1,-1,-1,1
+Deveríamos apostar em Organismos Geneticamente Modificados (OGM) e explorar outras formas de engenharia genética,social,tecnologia,1,1,0,2,-1,1,-1,-1,-1,0,0,0,-1,1,1,0
+A Europa deveria apostar mais em energia nuclear,social,tecnologia,-1,-1,2,1,-1,1,-2,-2,1,-1,0,1,-1,1,1,0
+A separação de poderes políticos é mais importante do que a rapidez nas decisões políticas.,politicá,instituições,1,1,0,1,2,2,2,2,0,1,1,-1,1,2,1,0
+"O progresso social e político sustentável advém de líderes fortes e esclarecidos, não do diálogo e do compromisso entre as diferentes partes de uma sociedade.",politicá,instituições,-2,-2,1,-2,-1,-2,-2,-2,1,-2,-2,1,0,-2,-1,1
+"É essencial que numa democracia existam mecanismos fortes de controlo entre os diferentes poderes, mesmo que isso torne o sistema político mais complexo, opaco e a responsabilização mais difícil de determinar.",politicá,instituições,2,2,0,2,1,2,2,1,0,2,2,1,0,2,1,1
+"É importante que os funcionários da administração pública estejam protegidos das pressões políticas, mesmo que isso torne reformas da administração pública mais difíceis.",politicá,instituições,2,2,1,2,1,2,2,2,1,2,2,1,2,1,1,0
+"O sistema político do meu país necessita de uma revisão profunda, já que as instituições políticas do meu país não podem ser reformadas e melhoradas.",politicá,instituições,-2,-2,1,-1,1,-1,-1,1,2,-1,-1,1,2,-1,-1,0
+"A constituição deve proteger direitos individuais sem discriminar minorias, independentemente da vontade da maioria.",politicá,justiça,2,2,-1,2,1,2,2,1,-1,2,2,-1,2,2,1,0
+"O governo deve tentar regular os meios de comunicação social, para garantir que notícias falsas não se propagam.",politicá,justiça,-1,-1,-1,-2,-1,-2,-2,-1,-2,-2,-2,-1,1,-2,-1,0
+"O principal objectivo do sistema prisional deveria ser punir severamente para dissuadir o crime, não reabilitar os infratores.",politicá,justiça,-2,-1,2,-1,-1,-2,-2,-2,2,-1,-1,1,0,-2,-1,0
+"A liberdade de expressão deve ser protegida, mesmo quando causa angústia a minorias oprimidas, a figuras de autoridade ou é dirigida contra símbolos nacionais, desde que não incite violência.",politicá,justiça,1,1,-1,2,1,2,1,2,0,1,1,-1,2,1,1,1
+"Algumas liberdades nunca deverão ser comprometidas, mesmo temporariamente, e mesmo face a eventos extraordinários (como uma guerra ou uma pandemia).",politicá,justiça,1,1,1,1,0,1,1,0,0,1,1,1,0,1,1,0
+"É mais importante garantir que criminosos e corruptos são apanhados e punidos, do que garantir que inocentes não são injustamente perseguidos ou condenados pela justiça.",politicá,justiça,-2,-1,1,-2,-1,-2,-2,-2,1,-2,-2,0,-1,-2,-1,1
+"A União Europeia não deveria ajudar países democráticos e liberais contra a agressão de países autocráticos, tanto a nível económico como fornecendo apoio militar.",politicá,política externa,-2,-2,1,-2,2,-2,-2,1,1,-1,-2,1,2,-2,-1,0
+A melhor maneira de resolver questões diplomáticas complexas como o conflito Israel-Palestina é a comunidade internacional capacitar organizações internacionais como as Nações Unidas.,politicá,política externa,2,2,-1,1,1,2,2,2,-1,2,2,0,-1,2,1,1
+Sanções económicas são uma boa forma de condenar actos de política externa dos quais discordamos e de promover os valores do país internacionalmente.,politicá,política externa,2,2,-1,1,-1,2,2,1,-1,2,2,0,-2,2,1,0
+"As alianças militares com países que partilham valores semelhantes, como a NATO, são a melhor forma de garantir uma paz duradoura, mesmo que isso signifique ser arrastado para uma guerra, no pior dos cenários.",politicá,política externa,2,2,1,2,-2,1,1,-1,0,1,2,1,-2,2,1,1
+"A adesão à União Europeia foi benéfica e uma maior integração europeia é desejável, mesmo que isso implique uma maior transferência de soberania nacional",politicá,integração europeia,1,1,-1,2,-2,2,1,-1,-1,1,1,0,-2,2,1,0
+"Estar integrado numa União Europeia mais forte seria benéfico para Portugal a longo prazo, mesmo que a curto prazo isso possa acarretar custos em algumas matérias, como na política agrícola e de pescas.",politicá,integração europeia,2,2,-2,2,-2,2,2,-1,-1,1,1,-1,-2,2,1,1
+"É possível encontrar soluções para problemas como as alterações climáticas e a evasão fiscal internacional através de políticas nacionais, sem cooperação e integração política internacional.",politicá,integração europeia,-2,-1,1,-1,-1,-1,-2,-1,2,-1,-1,1,-1,-2,-1,1
+A emissão de dívida europeia é um passo importante e desejável na integração europeia futura.,politicá,integração europeia,2,1,-1,0,-2,1,1,0,-1,1,1,-1,-2,2,1,0
+As nações desenvolvidas não têm uma obrigação moral de acolher refugiados que fogem do seu país por questões como a guerra ou alterações climáticas.,politicá,política externa,-2,-1,2,-1,-2,-2,-2,-2,1,-2,-2,2,-1,-2,-1,0
