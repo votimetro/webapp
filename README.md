@@ -6,6 +6,18 @@
 
 **Responda a perguntas simples sobre política e economia para saber qual partido mais se alinha com as suas opiniões.**
 
+Partidos incluídos: AD | ADN | BE | Chega | IL | JPP | Livre | Nova Direita | PAN | CDU | PCTP/MRPP | PS | RIR | Volt
+
+O teste inclui os partidos que tiveram mais do que 7000 votos nas eleições legislativas de 2024 (mínimo de assinaturas para a formação de um partido político em Portugal).
+
+As afirmações que compõem o teste visam avaliar a posição relativamente a valores políticos abstractos e intemporais, não a questões especificas da realidade portuguesa em 2025. As afirmações cobrem 3 eixos:
+
+*Eixo Económico*: Mede o grau de intervenção geral do Estado na Economia. Espectro Esquerda-Direita.
+
+*Eixo Social*: Mede o grau de abertura a mudanças sociais. Espectro Conservador-Progressista.
+
+*Eixo Político*: Mede o grau de liberalismo político a nível de política interna e externa. Espectro Autoritário/Nacionalista-Liberal/Globalista
+
 </div>
 
 <div align="center">
