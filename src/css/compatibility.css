@@ -1,0 +1,197 @@
+.party-box {
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.party-card {
+    padding: 30px;
+    display: flex;
+    position: relative;
+}
+
+.left-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        scale: 1.2;
+    }
+}
+
+dialog .right-column {
+    /* data info in dialog does not display percentage. */
+    display: none;
+}
+
+.logo-placeholder {
+    margin: auto;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.party-name {
+    text-transform: uppercase;
+    position: absolute;
+    color: black;
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.party-name img {
+    /* arrow to indicate clickable element */
+    height: 12px;
+}
+
+.party-bar-container {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #F2E3C4;
+}
+
+.party-row:nth-child(14n+2) .party-bar-container {
+    background: linear-gradient(to left, #4a90e2, #5ca0e6, #6eb1eb, #7ec2ef);
+}
+
+.party-percentage {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    min-width: 30px;
+    text-align: right;
+}
+
+.party-table-title {
+    margin-top: 192px;
+}
+
+.party-table {
+    padding: 32px 32px;
+    overflow: hidden;
+}
+
+.party-table-info :not(p:first-child) {
+  margin-top: 20px;
+}
+
+.party-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    position: relative;
+
+    img {
+        padding-right: 10px;
+    }
+}
+
+.party-logo img {
+    max-width: 24px;
+    max-height: 24px;
+}
+
+.party-row:nth-child(14n+2) {
+    /* Only the first element gets a margin-top. */
+    margin-top: 20px;
+}
+
+.party-table-info {
+    transition: all 200ms ease-in-out;
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding-bottom: -10px;
+    margin-right: 16px;
+    margin-left: -12px;
+    position: absolute;
+    z-index: 1;
+    padding: 16px;
+    top: -177px;
+
+    .arrow-down {
+        rotate: 180deg;
+    }
+}
+
+.party-table-info.down {
+    top: 20px !important;
+    border: 2px solid var(--bg-color);
+}
+
+.party-description {
+    max-width: 400px;
+}
+
+.percentage-circle-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.yellow-stripe {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 15px;
+    background-color: #f9d56e;
+}
+
+.sharing {
+    transition: all 200ms ease-in-out;
+    position: relative;
+    top: -20px;
+    z-index: -10;
+}
+
+.sharing.down {
+    top: 5px;
+    z-index: 0;
+}
+
+
+@media (width <= 540px) {
+    .party-table-info.down {
+        top: 5px !important;
+    }
+
+    .party-table-info :not(p:first-child) {
+        margin-top: 16px;
+    }
+
+    .party-table-info {
+        top: calc(-373px + 1.15 * (100vw - 360px));
+        left: 0;
+        margin: 0 8px;
+        padding: 8px;
+    }
+}
+
+
+@media (width >= 470px) and (width <= 540px) {
+    .party-table-info {
+        top: calc(-275px + 0.629 * (100vw - 470px));
+    }
+
+}

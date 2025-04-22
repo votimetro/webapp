@@ -1,0 +1,18 @@
+:root {
+    --bg-color: #FFE8C2;
+    --bg-card: #FFF5E0;
+    --txt-secondary-col: #D59710;
+
+    --fold-width: 1080px;
+    --max-width: 896px;
+    --border-radius: 56px;
+    --button-radius: 42px;
+
+    --text-s-size: 18px;
+}
+
+@media (width <= 540px) {
+    :root {
+        --border-radius: 32px;
+    }
+}
