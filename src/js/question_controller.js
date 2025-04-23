@@ -573,11 +573,16 @@ class QuestionController extends Controller {
   }
 
   answer(event) {
-    this.userAnswers[this.currentQuestion] = {
-      answer: parseInt(event.target.value),
-      index: this.questions[this.currentQuestion].index,
-      multiplier: this.questions[this.currentQuestion].multiplier,
-      type: this.questions[this.currentQuestion].type
+    const parsedValue = parseInt(event.target.value);
+
+    // Only add to userAnswers if the parsed value is a valid number
+    if (!isNaN(parsedValue)) {
+      this.userAnswers[this.currentQuestion] = {
+        answer: parseInt(event.target.value),
+        index: this.questions[this.currentQuestion].index,
+        multiplier: this.questions[this.currentQuestion].multiplier,
+        type: this.questions[this.currentQuestion].type
+      }
     }
     this.canProceed()
   }
