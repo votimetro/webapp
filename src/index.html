@@ -1,329 +1,481 @@
 <!DOCTYPE html>
 <html lang="pt">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no initial-scale=1.0"
+    />
     <title>Votímetro</title>
     <style>
-        body {
-            font-family: Arial;
-        }
+      body {
+        font-family: Arial;
+      }
     </style>
     <link rel="icon" type="image/png" href="./images/favicon/" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="./images/favicon//favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="./images/favicon//favicon.svg"
+    />
     <link rel="shortcut icon" href="./images/favicon//favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon//apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/favicon//apple-touch-icon.png"
+    />
     <link rel="manifest" href="./images/favicon//site.webmanifest" />
 
     <!-- Social stuff  -->
     <meta property="og:title" content="Votimetro" />
     <meta property="og:image" content="https://votimetro.app/images/mark.svg" />
-    <meta name="twitter:title" content="Votimetro">
-    <meta name="twitter:description" content="O seu partido ideal?">
-    <meta name="twitter:image" content="https://votimetro.app/images/mark.svg">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Votimetro" />
+    <meta name="twitter:description" content="O seu partido ideal?" />
+    <meta
+      name="twitter:image"
+      content="https://votimetro.app/images/mark.svg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="stylesheet" href="./css/main.css" type="text/css" media="all">
-    <script defer data-domain="votimetro.app" src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script>
-    <script>window.plausible = window.plausible || function() {
-        (window.plausible.q = window.plausible.q || []).push(arguments)
-    }</script>
-</head>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" media="all" />
+    <script
+      defer
+      data-domain="votimetro.app"
+      src="https://plausible.io/js/script.outbound-links.tagged-events.js"
+    ></script>
+    <script>
+      window.plausible =
+        window.plausible ||
+        function () {
+          (window.plausible.q = window.plausible.q || []).push(arguments);
+        };
+    </script>
+  </head>
 
-<body class="">
-
+  <body class="">
     <template id="circle">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="80" fill="none" stroke="#f5e9c3" stroke-width="20"></circle>
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          cx="100"
+          cy="100"
+          r="80"
+          fill="none"
+          stroke="#f5e9c3"
+          stroke-width="20"
+        ></circle>
 
-        <circle cx="100" cy="100" r="80" fill="none" stroke="url(#blueGradient)" stroke-width="20"
-                stroke-linecap="" stroke-dasharray="502.4" stroke-dashoffset="${offset}"
-                transform="rotate(-90, 100, 100)" id="circle-fill"></circle>
+        <circle
+          cx="100"
+          cy="100"
+          r="80"
+          fill="none"
+          stroke="url(#blueGradient)"
+          stroke-width="20"
+          stroke-linecap=""
+          stroke-dasharray="502.4"
+          stroke-dashoffset="${offset}"
+          transform="rotate(-90, 100, 100)"
+          id="circle-fill"
+        ></circle>
 
-        <text x="100" y="100" id="circle-percent" dominant-baseline="middle" text-anchor="middle"
-                font-family="Arial, sans-serif" font-size="36" font-weight="bold">${number}</text>
+        <text
+          x="100"
+          y="100"
+          id="circle-percent"
+          dominant-baseline="middle"
+          text-anchor="middle"
+          font-family="Arial, sans-serif"
+          font-size="36"
+          font-weight="bold"
+        >
+          ${number}
+        </text>
 
         <defs>
-            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#308CCE"></stop>
-                <stop offset="100%" stop-color="#91D0FE"></stop>
-            </linearGradient>
+          <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#308CCE"></stop>
+            <stop offset="100%" stop-color="#91D0FE"></stop>
+          </linearGradient>
         </defs>
-        </svg>
+      </svg>
     </template>
 
-
     <main class="center flex-column">
-        <dialog></dialog>
+      <dialog></dialog>
 
-        <div class="container fold-box title-box">
-            <div class="flex logo">
-                <img src="./images/mark.svg" alt="" class="mark">
-                <h1>votímetro</h1>
+      <div class="container fold-box title-box">
+        <div class="flex logo">
+          <img src="./images/mark.svg" alt="" class="mark" />
+          <h1>votímetro</h1>
+        </div>
+        <a href="https://github.com/votimetro/webapp" class="github-logo"></a>
+      </div>
+
+      <div class="container fold-box">
+        <div class="blurb">
+          <h2>O seu partido ideal?</h2>
+          <p class="text-m">
+            Este teste visa avaliar o seu posicionamento político e comparar o
+            seu posicionamento em relação aos partidos portugueses. Em cada
+            questão, será confrontado com uma afirmação e será pedido para
+            escolher qual o nível de concordância.
+          </p>
+          <p class="text-m mt-1">
+            Os resultados mostram o posicionamento relativamente aos vários
+            partidos portugueses e o grau de semelhança das resposta em relação
+            a cada partido, medido pela soma dos desvios absolutos em todas as
+            respostas do teste.
+          </p>
+        </div>
+        <div class="shape">
+          <div class="curves">
+            <div class="red-curve-div"></div>
+            <img src="./images/blue_curve.svg" class="blue-curve" />
+          </div>
+
+          <!-- <div class="blue-curve-div"></div> -->
+
+          <img src="./images/shapes.svg" alt="" class="shape" />
+        </div>
+      </div>
+
+      <div class="container fold-box center down-button">
+        <button
+          class="btn nav-button text-s"
+          data-controller="scroll"
+          data-action="scroll#toQuestion"
+        >
+          <img src="./images/arrow_down.svg" alt="" class="arrow-down" />
+          Começar
+          <img src="./images/arrow_down.svg" alt="" class="arrow-down" />
+        </button>
+      </div>
+
+      <div class="container question-box" data-controller="question">
+        <div class="center" data-question-target="questionCount">
+          <div class="question-header">
+            <h2>Questão</h2>
+            <div class="question-number center">
+              <span class="current-number" data-question-target="number"
+                >1</span
+              >
+              /
+              <span data-question-target="total_q">24</span>
             </div>
-            <a href="https://github.com/votimetro/webapp" class="github-logo"></a>
+          </div>
         </div>
 
-        <div class="container fold-box">
-            <div class="blurb">
-                <h2>O seu partido ideal?</h2>
-                <p class="text-m">
-                    Este teste visa avaliar o seu posicionamento político e comparar o seu posicionamento em relação aos partidos portugueses. Em cada questão, será confrontado com uma afirmação e será pedido para escolher qual o nível de concordância.
-                </p>
-                <p class="text-m mt-1">
-                    Os resultados mostram o posicionamento relativamente aos vários partidos portugueses e o grau de semelhança das resposta em relação a cada partido, medido pela soma dos desvios absolutos em todas as respostas do teste.
-                </p>
+        <div
+          class="content-box"
+          data-question-target="content"
+          data-action="question:ready@window->question#init"
+        >
+          <div class="question-text">
+            <div class="category text-ss">
+              <span data-question-target="type" class="title"></span> -
+              <span data-question-target="theme" class="title"></span>
             </div>
-            <div class="shape">
-                <div class="curves">
-                    <div class="red-curve-div"></div>
-                    <img src="./images/blue_curve.svg" class="blue-curve">
-                </div>
+            <span class="text-m" data-question-target="question">
+              loading...
+            </span>
+          </div>
 
-                <!-- <div class="blue-curve-div"></div> -->
-
-                <img src="./images/shapes.svg" alt="" class="shape">
-            </div>
+          <div class="options">
+            <label class="btn select-btn agree-totally">
+              <input
+                data-action="question#answer"
+                data-question-target="answer"
+                type="radio"
+                name="question"
+                value="2"
+              />
+              <span class="text-ss">CONCORDO TOTALMENTE</span>
+              <div class="option-icon">
+                <img src="./images/okhand.svg" />
+                <img src="./images/okhand.svg" />
+              </div>
+            </label>
+            <label class="btn select-btn agree-partially">
+              <input
+                data-action="question#answer"
+                data-question-target="answer"
+                type="radio"
+                name="question"
+                value="1"
+              />
+              <span class="text-ss">CONCORDO PARCIALMENTE</span>
+              <div class="option-icon">
+                <img src="./images/okhand.svg" />
+              </div>
+            </label>
+            <label class="btn select-btn neutral">
+              <input
+                data-action="question#answer"
+                data-question-target="answer"
+                type="radio"
+                name="question"
+                value="0"
+              />
+              <span class="text-ss">POSIÇÃO NEUTRA</span>
+              <div class="option-icon"></div>
+            </label>
+            <label class="btn select-btn disagree-partially">
+              <input
+                data-action="question#answer"
+                data-question-target="answer"
+                type="radio"
+                name="question"
+                value="-1"
+              />
+              <span class="text-ss">DISCORDO PARCIALMENTE</span>
+              <div class="option-icon">
+                <img src="./images/not_ok_hand.svg" />
+              </div>
+            </label>
+            <label class="btn select-btn disagree-totally">
+              <input
+                data-action="question#answer"
+                data-question-target="answer"
+                type="radio"
+                name="question"
+                value="-2"
+              />
+              <span class="text-ss">DISCORDO TOTALMENTE</span>
+              <div class="option-icon">
+                <img src="./images/not_ok_hand.svg" />
+                <img src="./images/not_ok_hand.svg" />
+              </div>
+            </label>
+            <label class="btn select-btn no-answer">
+              <input
+                data-action="question#answer"
+                data-question-target="answer"
+                type="radio"
+                name="question"
+                value="NaN"
+              />
+              <span class="text-ss">NÃO VOU RESPONDER</span>
+              <div class="option-icon"></div>
+            </label>
+          </div>
         </div>
 
-        <div class="container fold-box center down-button">
-            <button class="btn nav-button text-s" data-controller="scroll" data-action="scroll#toQuestion">
-                <img src="./images/arrow_down.svg" alt="" class="arrow-down">
-                Começar
-                <img src="./images/arrow_down.svg" alt="" class="arrow-down">
+        <div class="navigation">
+          <button
+            data-question-target="previous"
+            data-action="question#previous"
+            class="btn nav-button"
+            disabled
+          >
+            <svg
+              class="arrow"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.5 15L7.5 10L12.5 5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            ANT.
+          </button>
+          <button
+            data-question-target="next"
+            data-action="question#next"
+            class="btn nav-button"
+            disabled
+          >
+            PRÓX.
+            <svg
+              class="arrow"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.5 5L12.5 10L7.5 15"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button
+            class="hidden btn nav-button tudo"
+            data-question-target="correctBtn"
+            data-action="question#complete"
+            style="margin-left: 20%"
+          >
+            <img src="./images/correct.svg" />
+            Feito!
+          </button>
+
+          <div
+            data-question-target="complete"
+            class="flex flex-column center auto hidden"
+          >
+            <button
+              class="btn nav-button"
+              data-action="question#takeAllQuestions"
+            >
+              Faça o teste completo
+              <img src="./images/star.svg" class="icon" />
             </button>
+
+            <span
+              class="text-s mt-4 btn center"
+              style="gap: 8px"
+              data-action="click->question#showResults click->scroll#toResults"
+              data-controller="scroll"
+            >
+              Veja o resultado
+              <img src="./images/bars.svg" class="icon" />
+            </span>
+          </div>
         </div>
 
+        <div id="user-results" class="hidden" data-question-target="result">
+          <div class="center mb-4" style="margin-top: 192px">
+            <div class="question-header">
+              <h2>Compatibilidade política</h2>
+            </div>
+          </div>
 
-        <div class="container question-box" data-controller="question">
-            <div class="center" data-question-target="questionCount">
-                <div class="question-header">
-                    <h2>Questão</h2>
-                    <div class="question-number center">
-                        <span class="current-number" data-question-target="number">1</span>
-                        /
-                        <span data-question-target="total_q">24</span>
-                    </div>
-                </div>
+          <div id="party-box"></div>
+
+          <button
+            class="btn nav-button auto bg-color"
+            data-action="question#showSharing"
+          >
+            Partilha o resultado
+            <img src="./images/share.svg" />
+          </button>
+          <div class="center sharing gap-8">
+            <a href="">Twitter</a>
+            <a href="">Facebook</a>
+          </div>
+
+          <div class="center mb-2 party-table-title">
+            <div class="question-header">
+              <h3>Com todos os partidos</h3>
+            </div>
+          </div>
+
+          <div id="party-table" class="content-box party-box party-table">
+            <div class="party-row">
+              <img src="/api/placeholder/24/24" alt="PS" \ />
+              <div class="party-bar-container" style="flex-grow: 69">
+                <div class="party-name">PARTIDO SOCIALISTA</div>
+              </div>
+              <div style="flex-grow: 31"></div>
+              <div class="party-percentage">69%</div>
             </div>
 
-            <div class="content-box" data-question-target="content" data-action="question:ready@window->question#init">
-
-                <div class="question-text">
-                    <div class="category text-ss">
-                        <span data-question-target="type" class="title"></span> -
-                        <span data-question-target="theme" class="title"></span>
-                    </div>
-                    <span class="text-m" data-question-target="question">
-                        loading...
-                    </span>
-                </div>
-
-                <div class="options">
-                    <label class="btn select-btn agree-totally">
-                        <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="2">
-                        <span class="text-ss">CONCORDO TOTALMENTE</span>
-                        <div class="option-icon">
-                            <img src="./images/okhand.svg">
-                            <img src="./images/okhand.svg">
-                        </div>
-                    </label>
-                    <label class="btn select-btn agree-partially">
-                        <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="1">
-                        <span class="text-ss">CONCORDO PARCIALMENTE</span>
-                        <div class="option-icon">
-                            <img src="./images/okhand.svg">
-                        </div>
-                    </label>
-                    <label class="btn select-btn neutral">
-                        <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="0">
-                        <span class="text-ss">POSIÇÃO NEUTRA</span>
-                        <div class="option-icon"></div>
-                    </label>
-                    <label class="btn select-btn disagree-partially">
-                        <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="-1">
-                        <span class="text-ss">DISCORDO PARCIALMENTE</span>
-                        <div class="option-icon">
-                            <img src="./images/not_ok_hand.svg">
-                        </div>
-                    </label>
-                    <label class="btn select-btn disagree-totally">
-                        <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="-2">
-                        <span class="text-ss">DISCORDO TOTALMENTE</span>
-                        <div class="option-icon">
-                            <img src="./images/not_ok_hand.svg">
-                            <img src="./images/not_ok_hand.svg">
-                        </div>
-                    </label>
-                    <label class="btn select-btn no-answer">
-                        <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="NaN">
-                        <span class="text-ss">NÃO VOU RESPONDER</span>
-                        <div class="option-icon"></div>
-                    </label>
-                </div>
+            <div class="party-row">
+              <img src="/api/placeholder/24/24" alt="PS" \ />
+              <div class="party-bar-container" style="flex-grow: 69">
+                <div class="party-name">PARTIDO SOCIALISTA</div>
+              </div>
+              <div style="flex-grow: 31"></div>
+              <div class="party-percentage">69%</div>
             </div>
+          </div>
 
-            <div class="navigation">
-                <button data-question-target="previous" data-action="question#previous" class="btn nav-button">
-                    <img src="./images/left_arrow.svg" class="arrow">
-                    ANT.
-                </button>
-                <button data-question-target="next" data-action="question#next" class="btn nav-button">
-                    PRÓX.
-                    <img src="./images/right_arrow.svg" class="arrow">
-                </button>
-                <button class="hidden btn nav-button tudo" data-question-target="correctBtn" data-action="question#complete" style="margin-left: 20%;">
-                    <img src="./images/correct.svg">
-                    Feito!
-                </button>
-
-                <div data-question-target="complete" class="flex flex-column center auto hidden">
-                    <button class="btn nav-button" data-action="question#takeAllQuestions">
-                        Faça o teste completo
-                        <img src="./images/star.svg" class="icon">
-                    </button>
-
-                    <span class="text-s mt-4 btn center" style="gap: 8px;" data-action="click->question#showResults click->scroll#toResults" data-controller="scroll">
-                        Veja o resultado
-                        <img src="./images/bars.svg" class="icon">
-                    </span>
-                </div>
+          <div class="center mb-2 chart-title">
+            <div class="question-header">
+              <h3>Espectro Político</h3>
             </div>
+          </div>
 
-            <div id="user-results" class="hidden" data-question-target="result">
+          <div class="content-box chart">
+            <div class="chart-info" data-controller="pulldown">
+              <p class="text-center text-ss mb-2">
+                <b>Posição Horizontal</b>: eixo <b>Económico</b>. Esquerda (-1)
+                vs. Direita (+1).<br />
+                <b>Posição Vertical</b>: eixo <b>Social</b>. Conservador (-1)
+                vs. Progressista (+1).<br />
+                <b>Côr da barra</b> (sobre o partido): eixo <b>Político</b>.
+                Autoritário/Nacionalista (Vermelho) vs. Liberal/Globalista
+                (Verde)<br /><br />
+                A sua posição é identificada com a bola azul e calculada com
+                base nas suas respostas.
+              </p>
 
-                <div class="center mb-4" style="margin-top: 192px;">
-                    <div class="question-header">
-                        <h2>Compatibilidade política</h2>
-                    </div>
-                </div>
-
-                <div id="party-box"></div>
-
-                <button
-                    class="btn nav-button auto bg-color"
-                    data-action="question#showSharing"
-                >
-                    Partilha o resultado
-                    <img src="./images/share.svg">
-                </button>
-                <div class="center sharing gap-8">
-                    <a href="">Twitter</a>
-                    <a href="">Facebook</a>
-                </div>
-
-                <div class="center mb-2 party-table-title">
-                    <div class="question-header">
-                        <h3>Com todos os partidos</h3>
-                    </div>
-                </div>
-
-                <div id="party-table" class="content-box party-box party-table">
-                    <div class="party-row">
-                        <img src="/api/placeholder/24/24" alt="PS" \>
-                        <div class="party-bar-container" style="flex-grow: 69">
-                            <div class="party-name">PARTIDO SOCIALISTA</div>
-                        </div>
-                        <div style="flex-grow: 31"></div>
-                        <div class="party-percentage">69%</div>
-                    </div>
-
-                    <div class="party-row">
-                        <img src="/api/placeholder/24/24" alt="PS" \>
-                        <div class="party-bar-container" style="flex-grow: 69">
-                            <div class="party-name">PARTIDO SOCIALISTA</div>
-                        </div>
-                        <div style="flex-grow: 31"></div>
-                        <div class="party-percentage">69%</div>
-                    </div>
-                </div>
-
-                <div class="center mb-2 chart-title">
-                    <div class="question-header">
-                        <h3>Espectro Político</h3>
-                    </div>
-                </div>
-
-                <div class="content-box chart">
-                    <div class="chart-info" data-controller="pulldown">
-                        <p class="text-center text-ss mb-2">
-                        <b>Posição Horizontal</b>: eixo <b>Económico</b>. Esquerda (-1) vs. Direita (+1).<br>
-                        <b>Posição Vertical</b>: eixo <b>Social</b>. Conservador (-1) vs. Progressista (+1).<br>
-                        <b>Côr da barra</b> (sobre o partido): eixo <b>Político</b>. Autoritário/Nacionalista (Vermelho) vs. Liberal/Globalista (Verde)<br><br>
-                        A sua posição é identificada com a bola azul e calculada com base nas suas respostas.
-                        </p>
-
-                        <div class="center pointer" data-action="click->pulldown#pullDown">
-                            <img src="./images/arrow_down.svg"
-                              class="pointer" data-pulldown-target="arrow"
-                            >
-                        </div>
-                    </div>
-                    <div id="chart">
-                        <!-- Axis labels -->
-                        <div class="text-s top-label">Progressista</div>
-                        <div class="text-s bottom-label">Conservador</div>
-                        <div class="text-s left-label">Esquerda</div>
-                        <div class="text-s right-label">Direita</div>
-
-                        <!-- Grid lines -->
-                        <div class="main-horizontal dotted-spaced"></div>
-                        <div class="main-vertical left dotted-spaced"></div>
-
-                        <!-- Dotted grid lines -->
-
-                        <!-- Parties positioned on the chart -->
-                        <!-- Partido Socialista - blue circle -->
-                        <div class="party ps" style="left: 40%; top: 45%">PS</div>
-
-                        <!-- Bloco de Esquerda - red star/figure -->
-                        <div class="party be" style="left: 35%; top: 35%">BE</div>
-
-                        <!-- PCP - hammer and sickle -->
-                        <div class="party pcp" style="left: 15%; top: 75%">PCP</div>
-
-                        <!-- Chega - in different positions -->
-                        <div class="party chega" style="left: 70%; top: 20%">CH</div>
-                        <div class="party chega" style="left: 35%; top: 80%">CH</div>
-
-                        <!-- AD - orange -->
-                        <div class="party ad" style="left: 65%; top: 40%">AD</div>
-                        <div class="party ad" style="left: 55%; top: 75%">AD</div>
-                        <div class="party ad" style="left: 20%; top: 85%">AD</div>
-
-                        <!-- Volt - purple -->
-                        <div class="party volt" style="left: 65%; top: 60%">VT</div>
-
-                        <!-- PAN - green -->
-                        <div class="party pan" style="left: 60%; top: 65%">PAN</div>
-
-                        <!-- IL - liberal initiative -->
-                        <div class="party il" style="left: 55%; top: 65%">IL</div>
-
-                        <!-- Extra circles for left side -->
-                        <div class="party be" style="left: 18%; top: 65%">PS</div>
-                        <div class="party be" style="left: 25%; top: 75%">PS</div>
-
-
-                    </div>
-
-                </div>
+              <div
+                class="center pointer"
+                data-action="click->pulldown#pullDown"
+              >
+                <img
+                  src="./images/arrow_down.svg"
+                  class="pointer"
+                  data-pulldown-target="arrow"
+                />
+              </div>
             </div>
+            <div id="chart">
+              <!-- Axis labels -->
+              <div class="text-s top-label">Progressista</div>
+              <div class="text-s bottom-label">Conservador</div>
+              <div class="text-s left-label">Esquerda</div>
+              <div class="text-s right-label">Direita</div>
 
+              <!-- Grid lines -->
+              <div class="main-horizontal dotted-spaced"></div>
+              <div class="main-vertical left dotted-spaced"></div>
 
+              <!-- Dotted grid lines -->
+
+              <!-- Parties positioned on the chart -->
+              <!-- Partido Socialista - blue circle -->
+              <div class="party ps" style="left: 40%; top: 45%">PS</div>
+
+              <!-- Bloco de Esquerda - red star/figure -->
+              <div class="party be" style="left: 35%; top: 35%">BE</div>
+
+              <!-- PCP - hammer and sickle -->
+              <div class="party pcp" style="left: 15%; top: 75%">PCP</div>
+
+              <!-- Chega - in different positions -->
+              <div class="party chega" style="left: 70%; top: 20%">CH</div>
+              <div class="party chega" style="left: 35%; top: 80%">CH</div>
+
+              <!-- AD - orange -->
+              <div class="party ad" style="left: 65%; top: 40%">AD</div>
+              <div class="party ad" style="left: 55%; top: 75%">AD</div>
+              <div class="party ad" style="left: 20%; top: 85%">AD</div>
+
+              <!-- Volt - purple -->
+              <div class="party volt" style="left: 65%; top: 60%">VT</div>
+
+              <!-- PAN - green -->
+              <div class="party pan" style="left: 60%; top: 65%">PAN</div>
+
+              <!-- IL - liberal initiative -->
+              <div class="party il" style="left: 55%; top: 65%">IL</div>
+
+              <!-- Extra circles for left side -->
+              <div class="party be" style="left: 18%; top: 65%">PS</div>
+              <div class="party be" style="left: 25%; top: 75%">PS</div>
+            </div>
+          </div>
         </div>
-
+      </div>
     </main>
 
-    <script id="data-questions" type="application/json" src="./questions.json"></script>
+    <script
+      id="data-questions"
+      type="application/json"
+      src="./questions.json"
+    ></script>
     <script type="module" src="./js/question_controller.js"></script>
-</body>
-
+  </body>
 </html>

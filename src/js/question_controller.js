@@ -21,13 +21,12 @@ function mockAnswers(count = 60) {
       answer: answerValue,
       index: i,
       multiplier: multiplier,
-      type: type
+      type: type,
     };
   }
 
   return mockAnswers;
 }
-
 
 /**
  * Returns a hex color along the gradient between two colors
@@ -40,11 +39,14 @@ function getGradientColor(color1, color2, percent) {
   // Convert hex colors to RGB
   const parseHex = (hex) => {
     // Remove # if present
-    hex = hex.replace('#', '');
+    hex = hex.replace("#", "");
 
     // Handle shorthand hex (#RGB)
     if (hex.length === 3) {
-      hex = hex.split('').map(char => char + char).join('');
+      hex = hex
+        .split("")
+        .map((char) => char + char)
+        .join("");
     }
 
     // Parse RGB values
@@ -66,16 +68,16 @@ function getGradientColor(color1, color2, percent) {
   // Convert back to hex
   const toHex = (value) => {
     const hex = value.toString(16);
-    return hex.length === 1 ? '0' + hex : hex;
+    return hex.length === 1 ? "0" + hex : hex;
   };
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
 
 const getPoliticalColor = (percentage) => {
-  const startingColor = '#D92372'
-  const endingColor = '#33D927'
-  return getGradientColor(startingColor, endingColor, percentage)
-}
+  const startingColor = "#D92372";
+  const endingColor = "#33D927";
+  return getGradientColor(startingColor, endingColor, percentage);
+};
 
 /**
  * Calculate political party affinity scores based on question answers.
@@ -86,16 +88,21 @@ const getPoliticalColor = (percentage) => {
  * @param {number} maxDiffPerQuestion - Maximum possible difference between answers for a single question
  * @returns {Object} Dictionary of party names and their affinity scores (0-1 scale), sorted by descending affinity
  */
-function calculatePartyAffinity(userAnswers, partyAnswers, questionIds = null, maxDiffPerQuestion = 4) {
+function calculatePartyAffinity(
+  userAnswers,
+  partyAnswers,
+  questionIds = null,
+  maxDiffPerQuestion = 4
+) {
   // Use provided questionIds or all keys from userAnswers
   questionIds = questionIds || Object.keys(userAnswers);
 
   // Filter to only include questions the user answered
-  const answeredQuestions = questionIds.filter(qId => qId in userAnswers);
+  const answeredQuestions = questionIds.filter((qId) => qId in userAnswers);
   const numAnswered = answeredQuestions.length;
 
   if (numAnswered === 0) {
-    return {};  // No answers to evaluate
+    return {}; // No answers to evaluate
   }
 
   // Calculate distance between user answers and each party's answers
@@ -104,7 +111,9 @@ function calculatePartyAffinity(userAnswers, partyAnswers, questionIds = null, m
     let totalDifference = 0;
     for (const questionId of answeredQuestions) {
       if (questionId in partyPositions) {
-        const difference = Math.abs(userAnswers[questionId] - partyPositions[questionId]);
+        const difference = Math.abs(
+          userAnswers[questionId] - partyPositions[questionId]
+        );
         totalDifference += difference;
       }
     }
@@ -117,11 +126,16 @@ function calculatePartyAffinity(userAnswers, partyAnswers, questionIds = null, m
   // Convert distances to affinity scores (0-1 scale)
   const affinityScores = {};
   for (const [party, distance] of Object.entries(distances)) {
-    affinityScores[party] = Math.max(0.0, Math.min(1.0, 1 - (distance / maxPossibleDistance)));
+    affinityScores[party] = Math.max(
+      0.0,
+      Math.min(1.0, 1 - distance / maxPossibleDistance)
+    );
   }
 
   // Sort by descending affinity score
-  const sortedEntries = Object.entries(affinityScores).sort((a, b) => b[1] - a[1]);
+  const sortedEntries = Object.entries(affinityScores).sort(
+    (a, b) => b[1] - a[1]
+  );
   const sortedScores = Object.fromEntries(sortedEntries);
 
   return sortedScores;
@@ -154,10 +168,9 @@ function tupleToCssPosition(x, y) {
   let topPercent = ((1 - y) / 2) * 100;
   topPercent = topPercent - offset;
 
-
   return {
     left: `${leftPercent}%`,
-    top: `${topPercent}%`
+    top: `${topPercent}%`,
   };
 }
 
@@ -170,21 +183,21 @@ function calculateCompassScores(questions) {
   const scores = { economic: 0.0, social: 0.0, political: 0.0 };
 
   // Filter questions by type
-  const socialQuestions = questions.filter(q => q.type === "social");
-  const economicQuestions = questions.filter(q => q.type === "económico");
-  const politicalQuestions = questions.filter(q => q.type === "política");
+  const socialQuestions = questions.filter((q) => q.type === "social");
+  const economicQuestions = questions.filter((q) => q.type === "económico");
+  const politicalQuestions = questions.filter((q) => q.type === "política");
 
   const axisDefinitions = {
     economic: economicQuestions,
     social: socialQuestions,
-    political: politicalQuestions
+    political: politicalQuestions,
   };
 
   // Calculate scores for each axis
   for (const [axisName, axisQuestions] of Object.entries(axisDefinitions)) {
     // Extract answers and multipliers for this axis
-    const validAnswers = axisQuestions.map(q => q.answer);
-    const relevantMultipliers = axisQuestions.map(q => q.multiplier);
+    const validAnswers = axisQuestions.map((q) => q.answer);
+    const relevantMultipliers = axisQuestions.map((q) => q.multiplier);
 
     const numAnswered = validAnswers.length;
 
@@ -193,7 +206,7 @@ function calculateCompassScores(questions) {
 
     // Calculate weighted sum
     const weightedScoreSum = validAnswers.reduce((sum, answer, index) => {
-      return sum + (answer * relevantMultipliers[index]);
+      return sum + answer * relevantMultipliers[index];
     }, 0);
 
     // Normalize score between -1 and 1
@@ -202,29 +215,39 @@ function calculateCompassScores(questions) {
   }
 
   // Make the score between 0 and 1, so that it is equivalent to a percentage value.
-  let normalizedPoliticalScore = ((scores.political + 1) / 2);
-  let political = {politicalColor: getPoliticalColor(normalizedPoliticalScore)}
-  return { ...scores, ...tupleToCssPosition(scores.economic, scores.social), ...political };
+  let normalizedPoliticalScore = (scores.political + 1) / 2;
+  let political = {
+    politicalColor: getPoliticalColor(normalizedPoliticalScore),
+  };
+  return {
+    ...scores,
+    ...tupleToCssPosition(scores.economic, scores.social),
+    ...political,
+  };
 }
 
 const createCircle = (percent) => {
-  let circumference = 2* Math.PI * 80 // is a set value in svg
-  let offset = (1 - percent) * circumference
-  let number = Math.round(percent * 100, 0)
+  let circumference = 2 * Math.PI * 80; // is a set value in svg
+  let offset = (1 - percent) * circumference;
+  let number = Math.round(percent * 100, 0);
 
-  let svg = document.querySelector("#circle").innerHTML
-  svg = svg.replace("${offset}", offset)
-  svg = svg.replace("${number}", number + "%")
-  return svg
-}
+  let svg = document.querySelector("#circle").innerHTML;
+  svg = svg.replace("${offset}", offset);
+  svg = svg.replace("${number}", number + "%");
+  return svg;
+};
 
 const createChart = (parties, you) => {
-  let dots = ``
+  let dots = ``;
 
   for (let p of parties) {
-    dots = dots + `<div title="${p.fullname}" class="party ${p.key}" style="left: ${p.left}; top: ${p.top}"></div>`
+    dots =
+      dots +
+      `<div title="${p.fullname}" class="party ${p.key}" style="left: ${p.left}; top: ${p.top}"></div>`;
   }
-  dots = dots + `<div title="YOU" class="party you" style="left: ${you.left}; top: ${you.top};"></div>`
+  dots =
+    dots +
+    `<div title="YOU" class="party you" style="left: ${you.left}; top: ${you.top};"></div>`;
 
   let html = `
     <div class="economic-indicator"></div>
@@ -239,10 +262,10 @@ const createChart = (parties, you) => {
       <div class="main-vertical left dotted-spaced"></div>
       ${dots}
     </div>
-  `
+  `;
 
-  return html
-}
+  return html;
+};
 
 const createPartyTable = (affinities, parties) => {
   let html = `
@@ -259,11 +282,11 @@ const createPartyTable = (affinities, parties) => {
         >
       </div>
     </div>
-  `
+  `;
 
   for (let [party, affinity] of affinities) {
-    let percent = Math.round(100 * affinity, 0)
-    let rest = 100 - percent
+    let percent = Math.round(100 * affinity, 0);
+    let rest = 100 - percent;
     let row = `
       <div
           class="party-row pointer"
@@ -280,15 +303,14 @@ const createPartyTable = (affinities, parties) => {
             <div class="party-percentage">${percent}%</div>
           </div>
         </div>
-        `
-    html = html + row
+        `;
+    html = html + row;
   }
-  return html
-}
-
+  return html;
+};
 
 const createParty = (party, percent) => {
-  let svg = createCircle(percent)
+  let svg = createCircle(percent);
   let data = `
       <div id="party-box" class="content-box party-box">
         <div class="dialog-close pointer" onClick="document.querySelector('dialog').close()">
@@ -315,29 +337,26 @@ const createParty = (party, percent) => {
             </div>
         </div>
     </div>
-  `
-  return data
-}
+  `;
+  return data;
+};
 
 class PullDownController extends Controller {
-  static targets = [
-    "arrow"
-  ]
-
+  static targets = ["arrow"];
 
   pullDown() {
-    this.element.classList.toggle("down")
-    this.arrowTarget.classList.toggle("arrow-down")
+    this.element.classList.toggle("down");
+    this.arrowTarget.classList.toggle("arrow-down");
   }
 }
 
 class ScrollController extends Controller {
   toQuestion() {
-    this.scrollTo(".question-box", 40)
+    this.scrollTo(".question-box", 40);
   }
 
   toResults() {
-    this.scrollTo("#party-box", 160)
+    this.scrollTo("#party-box", 160);
   }
 
   scrollTo(selector, offset) {
@@ -346,12 +365,11 @@ class ScrollController extends Controller {
     var offsetPosition = elementPosition + window.pageYOffset - offset;
 
     window.scrollTo({
-         top: offsetPosition,
-         behavior: "smooth"
+      top: offsetPosition,
+      behavior: "smooth",
     });
   }
 }
-
 
 class QuestionController extends Controller {
   static targets = [
@@ -369,17 +387,17 @@ class QuestionController extends Controller {
     "theme",
     "total_q",
     "type",
-  ]
+  ];
 
   async initialize() {
-    await this.loadQuestions()
-    await this.loadPartyData()
-    await this.loadPartyAnswers()
+    await this.loadQuestions();
+    await this.loadPartyData();
+    await this.loadPartyAnswers();
   }
 
   connect() {
-    this.currentQuestion = 0
-    this.userAnswers = {}
+    this.currentQuestion = 0;
+    this.userAnswers = {};
   }
 
   init(event) {
@@ -387,71 +405,83 @@ class QuestionController extends Controller {
     // this.userAnswers = mockAnswers(60)
     // this.currentQuestion = 23
 
-    let questions = event.detail
+    let questions = event.detail;
 
-    this.shortQuestions = questions.filter((q) => { return q.short })
-    this.longQuestions = questions.filter((q) => { return !q.short })
+    this.shortQuestions = questions.filter((q) => {
+      return q.short;
+    });
+    this.longQuestions = questions.filter((q) => {
+      return !q.short;
+    });
 
-    this.questions = this.shortQuestions
-    this.totalQ = this.questions.length
-    this.halfway = false
+    this.questions = this.shortQuestions;
+    this.totalQ = this.questions.length;
+    this.halfway = false;
 
-    this.setQuestion(this.currentQuestion)
+    this.setQuestion(this.currentQuestion);
   }
 
   setQuestion(num) {
-    this.currentQuestion = num
-    this.questionTarget.innerHTML = this.questions[num].pergunta
-    this.total_qTarget.innerHTML = this.totalQ
-    this.typeTarget.innerHTML = this.questions[num].type
-    this.themeTarget.innerHTML = this.questions[num].theme
-    this.numberTarget.innerHTML = this.currentQuestion + 1
+    this.currentQuestion = num;
+    this.questionTarget.innerHTML = this.questions[num].pergunta;
+    this.total_qTarget.innerHTML = this.totalQ;
+    this.typeTarget.innerHTML = this.questions[num].type;
+    this.themeTarget.innerHTML = this.questions[num].theme;
+    this.numberTarget.innerHTML = this.currentQuestion + 1;
+
+    // Update button states
+    this.updateNavigationButtons();
+
+    this.canProceed();
   }
 
   setExistingAnswer() {
-    let answer = this.userAnswers[this.currentQuestion]?.answer
+    let answer = this.userAnswers[this.currentQuestion]?.answer;
     this.answerTargets.map((target) => {
       if (answer == undefined) {
-        target.checked = false
-      } else if (parseInt(target.value) ==  answer || isNaN(answer)) {
-        target.checked = true
+        target.checked = false;
+      } else if (parseInt(target.value) == answer || isNaN(answer)) {
+        target.checked = true;
       } else {
         // target does not match, do nothing.
       }
-    })
+    });
   }
 
   next() {
-    if (!this.canProceed() || this.showHalfway(this.currentQuestion + 1)) {
-      return
+    // Allow navigation to next question if it exists
+    if (this.currentQuestion + 1 < this.questions.length) {
+      this.setQuestion(this.currentQuestion + 1);
+      this.setExistingAnswer();
+      this.canProceed();
     }
-
-    this.setQuestion(this.currentQuestion + 1)
-    this.setExistingAnswer()
-    this.canProceed()
   }
 
   previous() {
-    this.setQuestion(this.currentQuestion - 1)
-    this.setExistingAnswer()
-    this.canProceed()
+    // Allow navigation to previous question if it exists
+    if (this.currentQuestion > 0) {
+      this.setQuestion(this.currentQuestion - 1);
+      this.setExistingAnswer();
+    }
   }
 
   complete() {
     // Shows the halfway screen
-    this.showHalfway(24)
+    this.showHalfway(24);
   }
 
   showHalfway(num) {
     if (num == this.questions.length) {
-      this.questionCountTarget.classList.add("hidden")
-      this.nextTarget.classList.add("hidden")
-      this.previousTarget.classList.add("hidden")
-      this.completeTarget.classList.remove("hidden")
-      this.correctBtnTarget.classList.add("hidden")
+      this.questionCountTarget.classList.add("hidden");
+      this.nextTarget.classList.add("hidden");
+      this.previousTarget.classList.add("hidden");
+      this.completeTarget.classList.remove("hidden");
+      this.correctBtnTarget.classList.add("hidden");
 
-      let answerCount = Object.values(this.userAnswers).filter((q) => !isNaN(q.answer)).length
-      this.questionnaireHTML = this.contentTarget.innerHTML
+      let answerCount = Object.values(this.userAnswers).filter(
+        (q) => !isNaN(q.answer)
+      ).length;
+      this.questionnaireHTML = this.contentTarget.innerHTML;
       this.contentTarget.innerHTML = `
         <div class="text-m center flex-column auto">
           <p>Respondeu a ${answerCount} das 60 perguntas.</p>
@@ -464,46 +494,46 @@ class QuestionController extends Controller {
             </p>
           </div>
         </div>
-      `
-      return true
+      `;
+      return true;
     }
   }
 
   takeAllQuestions() {
-    this.questions = this.shortQuestions.concat(this.longQuestions)
-    this.totalQ = this.questions.length
-    this._resetQuestionnaire()
-    this.setQuestion(24)
-    this.setExistingAnswer()
+    this.questions = this.shortQuestions.concat(this.longQuestions);
+    this.totalQ = this.questions.length;
+    this._resetQuestionnaire();
+    this.setQuestion(24);
+    this.setExistingAnswer();
   }
 
   _changePoliticalColor(parties, you) {
     for (let p of parties) {
-      let style = document.querySelector(`.party.${p.key}`).style
-      let color = p.politicalColor || getPoliticalColor(((p.political + 1) / 2))
-      style.setProperty('--politicalColor', color)
+      let style = document.querySelector(`.party.${p.key}`).style;
+      let color = p.politicalColor || getPoliticalColor((p.political + 1) / 2);
+      style.setProperty("--politicalColor", color);
     }
-    let style = document.querySelector(`.party.you`).style
-    style.setProperty('--politicalColor', you.politicalColor)
+    let style = document.querySelector(`.party.you`).style;
+    style.setProperty("--politicalColor", you.politicalColor);
   }
 
   showParty(event) {
-    let dialog = document.querySelector("dialog")
-    let party = event.currentTarget.dataset.party
-    let percent = event.currentTarget.dataset.percent
-    dialog.innerHTML = createParty(this.parties[party], percent)
-    dialog.showModal()
+    let dialog = document.querySelector("dialog");
+    let party = event.currentTarget.dataset.party;
+    let percent = event.currentTarget.dataset.percent;
+    dialog.innerHTML = createParty(this.parties[party], percent);
+    dialog.showModal();
   }
 
   showSharing(event) {
-    let sharing = document.querySelector(".sharing")
-    let [partyKey, percent] = this.getFirstResult()
-    let partyName = this.parties[partyKey].abbreviation.replace(' ', '+')
-    partyName = encodeURI(partyName)
-    percent = Math.round(percent * 100, 0)
-    let deployedUrl = 'votimetro.app'
-    let subject = 'O+meu+resultado+no+Vot%C3%ADmetro'
-    let body = `Fiz+o+teste+Vot%C3%ADmetro%21+O+meu+partido+mais+pr%C3%B3ximo+foi+${partyName}+%28${percent}%25%29.+Descobre+a+tua+posi%C3%A7%C3%A3o%3A+https%3A%2F%2F${deployedUrl}`
+    let sharing = document.querySelector(".sharing");
+    let [partyKey, percent] = this.getFirstResult();
+    let partyName = this.parties[partyKey].abbreviation.replace(" ", "+");
+    partyName = encodeURI(partyName);
+    percent = Math.round(percent * 100, 0);
+    let deployedUrl = "votimetro.app";
+    let subject = "O+meu+resultado+no+Vot%C3%ADmetro";
+    let body = `Fiz+o+teste+Vot%C3%ADmetro%21+O+meu+partido+mais+pr%C3%B3ximo+foi+${partyName}+%28${percent}%25%29.+Descobre+a+tua+posi%C3%A7%C3%A3o%3A+https%3A%2F%2F${deployedUrl}`;
 
     sharing.innerHTML = `
       <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F${deployedUrl}">
@@ -514,114 +544,154 @@ class QuestionController extends Controller {
 "><img src="./images/email.svg"></a>
       <a href="https://twitter.com/intent/tweet?text=${body}&hashtags=Votimetro,PoliticaPortuguesa
 "><img src="./images/twitter.svg"></a>
-    `
-    sharing.classList.add("down")
+    `;
+    sharing.classList.add("down");
   }
 
   getFirstResult() {
-    let [party, percent] = Object.entries(this.userAffinities)[0]
-    return [party, percent]
+    let [party, percent] = Object.entries(this.userAffinities)[0];
+    return [party, percent];
   }
 
   showResults() {
-    let score = calculateCompassScores(Object.values(this.userAnswers))
-    console.log(score)
+    let score = calculateCompassScores(Object.values(this.userAnswers));
+    console.log(score);
 
-    let answers = {}
+    let answers = {};
     for (let q of Object.values(this.userAnswers)) {
-      answers[q.index] = q.answer
+      answers[q.index] = q.answer;
     }
-    let userAffinities = calculatePartyAffinity(answers, this.partyAnswers)
-    this.userAffinities = userAffinities
+    let userAffinities = calculatePartyAffinity(answers, this.partyAnswers);
+    this.userAffinities = userAffinities;
 
-    this.resultTarget.classList.remove("hidden")
-    this.resultTarget.classList.remove("invisible")
-    let you = {left: score.left, top: score.top, politicalColor: score.politicalColor}
-    document.querySelector("#chart").innerHTML = createChart(Object.values(this.parties), you)
-    this._changePoliticalColor(Object.values(this.parties), you)
+    this.resultTarget.classList.remove("hidden");
+    this.resultTarget.classList.remove("invisible");
+    let you = {
+      left: score.left,
+      top: score.top,
+      politicalColor: score.politicalColor,
+    };
+    document.querySelector("#chart").innerHTML = createChart(
+      Object.values(this.parties),
+      you
+    );
+    this._changePoliticalColor(Object.values(this.parties), you);
 
-    let affinities = Object.entries(userAffinities)
-    let [party, percent] = affinities[0]
-    let data = createParty(this.parties[party], percent)
-    document.querySelector("#party-table").innerHTML = createPartyTable(affinities, this.parties)
-    this.resultTarget.querySelector("#party-box").outerHTML = data
+    let affinities = Object.entries(userAffinities);
+    let [party, percent] = affinities[0];
+    let data = createParty(this.parties[party], percent);
+    document.querySelector("#party-table").innerHTML = createPartyTable(
+      affinities,
+      this.parties
+    );
+    this.resultTarget.querySelector("#party-box").outerHTML = data;
   }
 
   _resetQuestionnaire() {
-    this.contentTarget.innerHTML = this.questionnaireHTML
-    this.nextTarget.classList.remove("hidden")
-    this.previousTarget.classList.remove("hidden")
-    this.completeTarget.classList.add("hidden")
-    this.correctBtnTarget.classList.remove("hidden")
-    this.questionCountTarget.classList.remove("hidden")
+    this.contentTarget.innerHTML = this.questionnaireHTML;
+    this.nextTarget.classList.remove("hidden");
+    this.previousTarget.classList.remove("hidden");
+    this.completeTarget.classList.add("hidden");
+    this.correctBtnTarget.classList.remove("hidden");
+    this.questionCountTarget.classList.remove("hidden");
   }
 
   review() {
-    this._resetQuestionnaire()
-    this.setQuestion(0)
-    this.setExistingAnswer()
+    this._resetQuestionnaire();
+    this.setQuestion(0);
+    this.setExistingAnswer();
   }
 
   canProceed() {
-    let isChecked = this.answerTargets.filter((target) => target.checked == true).length >= 1
-    if (this.userAnswers[this.currentQuestion] != undefined || isChecked ) {
-      this.nextTarget.removeAttribute("disabled")
-      return true
+    // Check if current question is already answered
+    const isAnswered = this.userAnswers[this.currentQuestion] !== undefined;
+
+    // Enable/disable next button based on whether current question is answered
+    let isChecked =
+      this.answerTargets.filter((target) => target.checked == true).length >= 1;
+
+    if (isAnswered || isChecked) {
+      this.nextTarget.removeAttribute("disabled");
+      return true;
     }
-    this.nextTarget.setAttribute("disabled", "disabled")
-    return false
+
+    this.nextTarget.setAttribute("disabled", "disabled");
+    return false;
   }
 
   answer(event) {
     const parsedValue = parseInt(event.target.value);
 
-    // Only add to userAnswers if the parsed value is a valid number
-    if (!isNaN(parsedValue)) {
-      this.userAnswers[this.currentQuestion] = {
-        answer: parseInt(event.target.value),
-        index: this.questions[this.currentQuestion].index,
-        multiplier: this.questions[this.currentQuestion].multiplier,
-        type: this.questions[this.currentQuestion].type
-      }
-    }
-    this.canProceed()
+    // Save the answer, even if it's NaN (skipped)
+    this.userAnswers[this.currentQuestion] = {
+      answer: parsedValue,
+      index: this.questions[this.currentQuestion].index,
+      multiplier: this.questions[this.currentQuestion].multiplier,
+      type: this.questions[this.currentQuestion].type,
+      skipped: isNaN(parsedValue),
+    };
+
+    // Enable the next button since we have an answer
+    this.nextTarget.removeAttribute("disabled");
   }
 
   async loadQuestions() {
     try {
-      const response = await fetch('./questions.json');
+      const response = await fetch("./questions.json");
       const data = await response.json();
-      this.dispatch("ready", {detail: data})
+      this.dispatch("ready", { detail: data });
       return data;
     } catch (error) {
-      console.error('Error loading JSON:', error);
+      console.error("Error loading JSON:", error);
     }
   }
 
   async loadPartyData() {
     try {
-      const response = await fetch('./party_info.json');
+      const response = await fetch("./party_info.json");
       const data = await response.json();
-      this.parties = data
+      this.parties = data;
     } catch (error) {
-      console.error('Error loading JSON:', error);
+      console.error("Error loading JSON:", error);
     }
   }
 
   async loadPartyAnswers() {
     try {
-      const response = await fetch('./party_answers.json');
+      const response = await fetch("./party_answers.json");
       const data = await response.json();
-      this.partyAnswers = data
+      this.partyAnswers = data;
     } catch (error) {
-      console.error('Error loading JSON:', error);
+      console.error("Error loading JSON:", error);
     }
   }
 
+  // Helper to determine if the current question is answered
+  isCurrentQuestionAnswered() {
+    // Check if answer is saved
+    if (this.userAnswers[this.currentQuestion] !== undefined) return true;
+    // Or if any radio is checked
+    return this.answerTargets.some((target) => target.checked);
+  }
+
+  // Update navigation buttons
+  updateNavigationButtons() {
+    // Previous button
+    if (this.currentQuestion === 0) {
+      this.previousTarget.setAttribute("disabled", "disabled");
+    } else {
+      this.previousTarget.removeAttribute("disabled");
+    }
+    // Next button
+    if (this.isCurrentQuestionAnswered()) {
+      this.nextTarget.removeAttribute("disabled");
+    } else {
+      this.nextTarget.setAttribute("disabled", "disabled");
+    }
+  }
 }
 
-
-window.Stimulus = Application.start()
-Stimulus.register("question", QuestionController)
-Stimulus.register("scroll", ScrollController)
-Stimulus.register("pulldown", PullDownController)
+window.Stimulus = Application.start();
+Stimulus.register("question", QuestionController);
+Stimulus.register("scroll", ScrollController);
+Stimulus.register("pulldown", PullDownController);
