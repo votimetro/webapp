@@ -471,6 +471,10 @@ class QuestionController extends Controller {
           firstOption.focus();
         }
       }, 100); // Small delay to ensure smooth scroll completes
+    } else if (this.currentQuestion + 1 === this.questions.length) {
+      // We're at the last question, show the completion button
+      this.correctBtnTarget.classList.remove("hidden");
+      this.nextTarget.classList.add("hidden");
     }
   }
 
@@ -492,11 +496,11 @@ class QuestionController extends Controller {
 
   complete() {
     // Shows the halfway screen
-    this.showHalfway(24);
+    this.showHalfway(this.questions.length);
   }
 
   showHalfway(num) {
-    if (num == this.questions.length) {
+    if (num === this.questions.length) {
       this.questionCountTarget.classList.add("hidden");
       this.nextTarget.classList.add("hidden");
       this.previousTarget.classList.add("hidden");
@@ -509,7 +513,7 @@ class QuestionController extends Controller {
       this.questionnaireHTML = this.contentTarget.innerHTML;
       this.contentTarget.innerHTML = `
         <div class="text-m center flex-column auto">
-          <p>Respondeu a ${answerCount} das 60 perguntas.</p>
+          <p>Respondeu a ${answerCount} das ${this.questions.length} perguntas.</p>
           <p>Pare aqui ou prossiga com o teste completo.</p>
 
           <div class="review">
@@ -582,34 +586,52 @@ class QuestionController extends Controller {
     let score = calculateCompassScores(Object.values(this.userAnswers));
     console.log(score);
 
+    // Filter out NaN answers and create a clean answers object
     let answers = {};
     for (let q of Object.values(this.userAnswers)) {
-      answers[q.index] = q.answer;
+      if (!isNaN(q.answer)) {
+        answers[q.index] = q.answer;
+      }
     }
-    let userAffinities = calculatePartyAffinity(answers, this.partyAnswers);
-    this.userAffinities = userAffinities;
 
-    this.resultTarget.classList.remove("hidden");
-    this.resultTarget.classList.remove("invisible");
-    let you = {
-      left: score.left,
-      top: score.top,
-      politicalColor: score.politicalColor,
-    };
-    document.querySelector("#chart").innerHTML = createChart(
-      Object.values(this.parties),
-      you
-    );
-    this._changePoliticalColor(Object.values(this.parties), you);
+    // Only calculate affinities if we have valid answers
+    if (Object.keys(answers).length > 0) {
+      let userAffinities = calculatePartyAffinity(answers, this.partyAnswers);
+      this.userAffinities = userAffinities;
 
-    let affinities = Object.entries(userAffinities);
-    let [party, percent] = affinities[0];
-    let data = createParty(this.parties[party], percent);
-    document.querySelector("#party-table").innerHTML = createPartyTable(
-      affinities,
-      this.parties
-    );
-    this.resultTarget.querySelector("#party-box").outerHTML = data;
+      this.resultTarget.classList.remove("hidden");
+      this.resultTarget.classList.remove("invisible");
+      let you = {
+        left: score.left,
+        top: score.top,
+        politicalColor: score.politicalColor,
+      };
+      document.querySelector("#chart").innerHTML = createChart(
+        Object.values(this.parties),
+        you
+      );
+      this._changePoliticalColor(Object.values(this.parties), you);
+
+      let affinities = Object.entries(userAffinities);
+      if (affinities.length > 0) {
+        let [party, percent] = affinities[0];
+        let data = createParty(this.parties[party], percent);
+        document.querySelector("#party-table").innerHTML = createPartyTable(
+          affinities,
+          this.parties
+        );
+        this.resultTarget.querySelector("#party-box").outerHTML = data;
+      }
+    } else {
+      // Show a message if no valid answers were provided
+      this.resultTarget.classList.remove("hidden");
+      this.resultTarget.classList.remove("invisible");
+      this.resultTarget.innerHTML = `
+        <div class="text-m center flex-column auto">
+          <p>Por favor, responda a pelo menos uma pergunta para ver os resultados.</p>
+        </div>
+      `;
+    }
   }
 
   _resetQuestionnaire() {
