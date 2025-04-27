@@ -1,18 +1,18 @@
 :root {
-    --bg-color: #FFE8C2;
-    --bg-card: #FFF5E0;
-    --txt-secondary-col: #D59710;
+  --bg-color: #ffe8c2;
+  --bg-card: #fff5e0;
+  --txt-secondary-col: #d59710;
 
-    --fold-width: 1080px;
-    --max-width: 896px;
-    --border-radius: 56px;
-    --button-radius: 42px;
+  --fold-width: 1080px;
+  --max-width: 896px;
+  --border-radius: 56px;
+  --button-radius: 42px;
 
-    --text-s-size: 18px;
+  --text-s-size: 18px;
 }
 
 @media (width <= 540px) {
-    :root {
-        --border-radius: 32px;
-    }
+  :root {
+    --border-radius: 32px;
+  }
 }

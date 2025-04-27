@@ -1,158 +1,163 @@
 .dotted-spaced {
-    background-image: linear-gradient(to right, var(--txt-secondary-col) 10%, rgba(255, 255, 255, 0) 0%);
-    background-position: top;
-    background-size: 20px 20px;
-    background-repeat: repeat-x;
+  background-image: linear-gradient(
+    to right,
+    var(--txt-secondary-col) 10%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: top;
+  background-size: 20px 20px;
+  background-repeat: repeat-x;
 }
 
 .left.dotted-spaced {
-    background-image: linear-gradient(to bottom, var(--txt-secondary-col) 10%, rgba(255, 255, 255, 0) 0%);
-    background-position: left;
-    background-size: 20px 20px;
-    background-repeat: repeat-y;
+  background-image: linear-gradient(
+    to bottom,
+    var(--txt-secondary-col) 10%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: left;
+  background-size: 20px 20px;
+  background-repeat: repeat-y;
 }
 
 .chart-title {
-    margin-top: 192px;
+  margin-top: 192px;
 }
 
 .chart-info {
-    transition: all 200ms ease-in-out;
-    background-color: var(--bg-card);
-    border-radius: var(--border-radius);
-    padding: 20px;
-    padding-bottom: 8px;
-    margin-right: 16px;
-    margin-left: -12px;
-    position: absolute;
-    z-index: 1;
-    top: -140px;
-    margin: auto;
-    margin-left: 10px;
+  transition: all 200ms ease-in-out;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  padding-bottom: 8px;
+  margin-right: 16px;
+  margin-left: -12px;
+  position: absolute;
+  z-index: 1;
+  top: -140px;
+  margin: auto;
+  margin-left: 10px;
 
-    .arrow-down {
-        rotate: 180deg;
-    }
+  .arrow-down {
+    rotate: 180deg;
+  }
 }
 
 .chart-info.down {
-    top: 30px;
-    border: 2px solid var(--bg-color);
+  top: 30px;
+  border: 2px solid var(--bg-color);
 }
 
-
 .chart {
-    overflow: hidden;
-    max-width: var(--max-width);
-    margin-top: 30px;
-    background-color: var(--bg-card);
-    border-top-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    padding: 20px;
+  overflow: hidden;
+  max-width: var(--max-width);
+  margin-top: 30px;
+  background-color: var(--bg-card);
+  border-top-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  padding: 20px;
 
-    /* change this for mobile so that it becomes a bit thinner. */
-    height: var(--max-width);
-    position: relative;
+  /* change this for mobile so that it becomes a bit thinner. */
+  height: var(--max-width);
+  position: relative;
 }
 
 #chart {
-    width: 100%;
+  width: 100%;
 }
 
-
-
 .axis-label {
-    position: absolute;
-    font-weight: bold;
-    color: #333;
-    text-transform: uppercase;
+  position: absolute;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
 }
 
 .top-label {
-    position: absolute;
-    top: 33px;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  top: 33px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .bottom-label {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .left-label {
-    position: absolute;
-    left: -10px;
-    top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
-    transform-origin: center;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
 }
 
 .right-label {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%) rotate(90deg);
-    transform-origin: center;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center;
 }
 
 .grid-line {
-    position: absolute;
-    background-color: #f0e0c0;
-    z-index: 0;
+  position: absolute;
+  background-color: #f0e0c0;
+  z-index: 0;
 }
 
 .horizontal-line {
-    width: 90%;
-    height: 1px;
-    left: 5%;
+  width: 90%;
+  height: 1px;
+  left: 5%;
 }
 
 .vertical-line {
-    height: 90%;
-    width: 1px;
-    top: 5%;
+  height: 90%;
+  width: 1px;
+  top: 5%;
 }
 
 /* Main axes */
 .main-horizontal {
-    left: 7%;
-    top: 50%;
-    width: 95%;
-    height: 2px;
-    position: absolute;
+  left: 7%;
+  top: 50%;
+  width: 95%;
+  height: 2px;
+  position: absolute;
 }
 
 .main-vertical {
-    top: 5%;
-    left: 50%;
-    height: 95%;
-    width: 2px;
-    position: absolute;
+  top: 5%;
+  left: 50%;
+  height: 95%;
+  width: 2px;
+  position: absolute;
 }
 
 .compass-container {
-    position: relative;
-    margin: 47px 57px;
-    height: 91%;
-    /* border: 1px solid black; */
+  position: relative;
+  margin: 47px 57px;
+  height: 91%;
+  /* border: 1px solid black; */
 }
 
 .party {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 12px;
-    color: white;
-    text-align: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .party::after {
@@ -169,7 +174,11 @@
   width: 30%;
   height: 20px;
   /* See colors in javascript. Need change there as well if you change here. */
-  background: linear-gradient(90deg,rgb(217, 35, 114) 0%, rgb(51, 217, 39) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(217, 35, 114) 0%,
+    rgb(51, 217, 39) 100%
+  );
   border-radius: 10px;
   position: absolute;
   right: 20px;
@@ -177,134 +186,133 @@
 }
 
 .ad {
-    background-image: url("../images/logos/ad.png");
+  background-image: url("../images/logos/ad.png");
 }
 
 .adn {
-    background-image: url("../images/logos/adn.png");
+  background-image: url("../images/logos/adn.png");
 }
 
 .be {
-    background-image: url("../images/logos/be.png");
+  background-image: url("../images/logos/be.png");
 }
 
 .cdu {
-    background-image: url("../images/logos/cdu.png");
+  background-image: url("../images/logos/cdu.png");
 }
 
 .chega {
-    background-image: url("../images/logos/chega.png");
+  background-image: url("../images/logos/chega.png");
 }
 
 .il {
-    background-image: url("../images/logos/il.png");
+  background-image: url("../images/logos/il.png");
 }
 
 .jpp {
-    background-image: url("../images/logos/jpp.png");
+  background-image: url("../images/logos/jpp.png");
 }
 
 .livre {
-    background-image: url("../images/logos/livre.png");
+  background-image: url("../images/logos/livre.png");
 }
 
 .nova {
-    background-image: url("../images/logos/nova.png");
+  background-image: url("../images/logos/nova.png");
 }
 
 .rir {
-    background-image: url("../images/logos/rir.png");
+  background-image: url("../images/logos/rir.png");
 }
 
 .pan {
-    background-image: url("../images/logos/pan.png");
+  background-image: url("../images/logos/pan.png");
 }
 
 .pcp {
-    background-image: url("../images/logos/pcp.png");
+  background-image: url("../images/logos/pcp.png");
 }
 
 .pctp {
-    background-image: url("../images/logos/pctp.png");
+  background-image: url("../images/logos/pctp.png");
 }
 
 .ps {
-    background-image: url("../images/logos/ps.png");
+  background-image: url("../images/logos/ps.png");
 }
 
 .volt {
-    background-image: url("../images/logos/volt.png");
+  background-image: url("../images/logos/volt.png");
 }
 
 .you {
-    background-image: url("../images/logos/you.png");
+  background-image: url("../images/logos/you.png");
 }
 
-
 @media (width <= 540px) {
-    .chart-title {
-        margin-top: 32px;
-    }
+  .chart-title {
+    margin-top: 32px;
+  }
 
-    .mb-2 {
-        margin-bottom: 0px;
-    }
+  .mb-2 {
+    margin-bottom: 0px;
+  }
 
-    .chart {
-        max-height: 700px;
-        background-color: unset !important;
-        margin: 0;
-        height: 100%
-    }
+  .chart {
+    max-height: 700px;
+    background-color: unset !important;
+    margin: 0;
+    height: 100%;
+  }
 
-    .chart-info {
-        background-color: var(--bg-color);
-        top: calc(-308px + (43/70) * (100vw - 360px));
-        margin: unset;
-        margin-left: unset;
-    }
+  .chart-info {
+    background-color: var(--bg-color);
+    top: calc(-308px + (43 / 70) * (100vw - 360px));
+    margin: unset;
+    margin-left: unset;
+  }
 
-    .chart-info.down {
-        border: 2px solid var(--bg-card);
-    }
+  .chart-info.down {
+    border: 2px solid var(--bg-card);
+  }
 
-    .top-label {
-        top: 32px;
-    }
+  .top-label {
+    top: 32px;
+  }
 
-    .left-label {
-        left: -30px;
-        top: 53%;
-    }
+  .left-label {
+    left: -30px;
+    top: 53%;
+  }
 
-    .right-label {
-        right: -18px;
-        top: 52%;
-    }
+  .right-label {
+    right: -18px;
+    top: 52%;
+  }
 
-    .bottom-label {
-        bottom: -4px;
-    }
+  .bottom-label {
+    bottom: -4px;
+  }
 
-    .party {
-        width: 37px;
-        height: 37px;
-        transform: translate(-4px, 20px);
-    }
+  .party {
+    width: 37px;
+    height: 37px;
+    transform: translate(-4px, 20px);
+  }
 
-    .main-horizontal {
-        width: 88%;
-    }
+  .main-horizontal {
+    width: 88%;
+  }
 
-    .compass-container {
-        height: 700px;
-        margin: 0;
-        margin: 0 12px;
-    }
+  .compass-container {
+    height: 700px;
+    margin: 0;
+    margin: 0 12px;
+  }
 }
 
 @media (width >= 470px) and (width <= 540px) {
-    .chart-info {
-        top: calc(-245px + (21/70) * (100vw - 470px));
-    }
+  .chart-info {
+    top: calc(-245px + (21 / 70) * (100vw - 470px));
+  }
 }

@@ -1,5 +1,5 @@
 .agree-totally {
-  background-color: #83B994;
+  background-color: #83b994;
   color: white;
 }
 
@@ -17,36 +17,36 @@
 }
 
 .neutral {
-  background-color: #F1D297;
+  background-color: #f1d297;
   color: white;
 }
 
 .neutral:has(input[type="radio"]:checked) {
-  background-color: #F09D00;
+  background-color: #f09d00;
 }
 
 .disagree-partially {
-  background-color: #FEC08B;
+  background-color: #fec08b;
   color: white;
 }
 
 .disagree-partially:has(input[type="radio"]:checked) {
-  background-color: #FB7400;
+  background-color: #fb7400;
 }
 
 .disagree-totally {
-  background-color: #F6A89A;
+  background-color: #f6a89a;
   color: white;
 }
 
 .disagree-totally:has(input[type="radio"]:checked) {
-  background-color: #DE391C;
+  background-color: #de391c;
 }
 
 .no-answer {
   background-color: var(--bg-card);
-  border: 2px solid #5D5E65;
-  color: #5D5E65;
+  border: 2px solid #5d5e65;
+  color: #5d5e65;
   margin-top: 16px;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .content-box {
-  background-color:var(--bg-card);
+  background-color: var(--bg-card);
   border-top-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   padding: 40px 40px 30px 40px;
@@ -115,8 +115,6 @@
   img.logo {
     width: 150px;
   }
-
-
 
   input[type="radio"] {
     display: none;
@@ -188,6 +186,4 @@
     flex-grow: 1;
     margin: 0 22px !important;
   }
-
-
 }

@@ -1,138 +1,133 @@
 .fold-box {
-    max-width: var(--fold-width);
-    display: flex;
-    justify-content: space-between;
+  max-width: var(--fold-width);
+  display: flex;
+  justify-content: space-between;
 }
 
 .title-box {
-    margin-top: 56px;
-    margin-bottom: 96px;
+  margin-top: 56px;
+  margin-bottom: 96px;
 }
 
 .logo {
-    gap: 24px;
-    flex-grow: 1;
-    align-items: flex-end;
+  gap: 24px;
+  flex-grow: 1;
+  align-items: flex-end;
 
-    .mark {
-        height: 46px;
-        margin-bottom: 5px;
-    }
+  .mark {
+    height: 46px;
+    margin-bottom: 5px;
+  }
 }
 
 .blurb {
-    margin-top: 32px;
-    max-width: 528px;
+  margin-top: 32px;
+  max-width: 528px;
 }
 
-
 .down-button {
-    margin-top: 5%;
-    margin-bottom: 20%;
-    .arrow-down {
-        width: 20px;
-    }
+  margin-top: 5%;
+  margin-bottom: 20%;
+  .arrow-down {
+    width: 20px;
+  }
 }
 
 .shape {
-    max-width: 436px;
-    position: relative;
-    /* needs mobile version */
+  max-width: 436px;
+  position: relative;
+  /* needs mobile version */
 
-    .red-curve-div {
-        --width: 2900px;
-        position: absolute;
-        top: -2700px;
-        right: -1900px;
-        rotate: 3deg;
-        z-index: -99;
-        border-bottom-left-radius: 100%;
-        border-bottom-right-radius: 100%;
-        border: 22px solid #FFADAD;
-        border-top: 0;
-        width: var(--width);
-        height: var(--width);
-        z-index: -99;
-        rotate: 30deg;
-    }
+  .red-curve-div {
+    --width: 2900px;
+    position: absolute;
+    top: -2700px;
+    right: -1900px;
+    rotate: 3deg;
+    z-index: -99;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border: 22px solid #ffadad;
+    border-top: 0;
+    width: var(--width);
+    height: var(--width);
+    z-index: -99;
+    rotate: 30deg;
+  }
 
-    .blue-curve {
-        rotate: 17deg;
-        position: absolute;
-        top: 81px;
-        left: -1200px;
-        z-index: -1;
-    }
+  .blue-curve {
+    rotate: 17deg;
+    position: absolute;
+    top: 81px;
+    left: -1200px;
+    z-index: -1;
+  }
 
-    .blue-curve-div{
-        --width: 3600px;
-        position: absolute;
-        top: -20px;
-        right: -780px;
-        rotate: 3deg;
-        z-index: -99;
-        border-top-left-radius: 100%;
-        border-top-right-radius: 100%;
-        border: 22px solid #94CDFF;
-        border-bottom: 0;
-        width: var(--width);
-        height: 2700px;
-        z-index: -99;
-    }
+  .blue-curve-div {
+    --width: 3600px;
+    position: absolute;
+    top: -20px;
+    right: -780px;
+    rotate: 3deg;
+    z-index: -99;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border: 22px solid #94cdff;
+    border-bottom: 0;
+    width: var(--width);
+    height: 2700px;
+    z-index: -99;
+  }
 }
-
-
 
 .github-logo {
-    height: 40px;
-    width: 40px;
-    margin: 12px 0;
-    background-image: url("../images/github.svg");
-    background-size: 40px;
+  height: 40px;
+  width: 40px;
+  margin: 12px 0;
+  background-image: url("../images/github.svg");
+  background-size: 40px;
 }
 
-
 @media (width <= 540px) {
-    .logo {
-        .mark {
-            height: 32px;
-            margin-bottom: 2px;
-        }
+  .logo {
+    .mark {
+      height: 32px;
+      margin-bottom: 2px;
     }
+  }
 
-    .fold-box {
-        flex-direction: column;
-    }
-    .title-box {
-        margin-top: 0px;
-        flex-direction: row;
-        margin-bottom: 10px;
-    }
+  .fold-box {
+    flex-direction: column;
+  }
+  .title-box {
+    margin-top: 0px;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
 
-    .shape {
-        max-width: 92vw;
-    }
-    .github-logo {
-        transform: scale(0.9);
-        margin: 0;
-    }
+  .shape {
+    max-width: 92vw;
+  }
+  .github-logo {
+    transform: scale(0.9);
+    margin: 0;
+  }
 
+  .blue-curve {
+    top: 17px !important;
+  }
 
-    .blue-curve {
-        top: 17px !important;
-    }
+  .curves {
+    position: relative;
+    top: -240px;
+    left: 190px;
+    z-index: -99;
+  }
 
-    .curves {
-        position: relative;
-        top: -240px;
-        left: 190px;
-        z-index: -99;
-    }
-
-    .fold-box {
-        margin-top: 0px;
-    }
-    .down-button {
-        margin-top: -40px;
-    }
+  .fold-box {
+    margin-top: 0px;
+  }
+  .down-button {
+    margin-top: -40px;
+  }
 }

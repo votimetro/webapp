@@ -1,105 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 body {
-    font-size: 16px;
+  font-size: 16px;
 }
 
-h1  {
-    font-family: Anton, Arial;
-    font-size: 58px;
-    line-height: 110%;
-    letter-spacing: 1.4%;
-    font-weight: 400;
-    margin: 0;
+h1 {
+  font-family: Anton, Arial;
+  font-size: 58px;
+  line-height: 110%;
+  letter-spacing: 1.4%;
+  font-weight: 400;
+  margin: 0;
 }
 
 h2 {
-    font-family: Poppins, Arial;
-    font-size: 36px;
-    line-height: 124%;
-    letter-spacing: 1.4%;
-    font-weight: 700;
-    margin: 0;
+  font-family: Poppins, Arial;
+  font-size: 36px;
+  line-height: 124%;
+  letter-spacing: 1.4%;
+  font-weight: 700;
+  margin: 0;
 }
 
 h3 {
-    font-family: Poppins, Arial;
-    font-size: 26px;
-    line-height: 126%;
-    letter-spacing: 2%;
-    font-weight: 700;
-    margin: 0;
+  font-family: Poppins, Arial;
+  font-size: 26px;
+  line-height: 126%;
+  letter-spacing: 2%;
+  font-weight: 700;
+  margin: 0;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 .text-l {
-    line-height: 140%;
-    letter-spacing: 1.4%;
-    font-weight: 600;
-    font-family: Poppins, Arial;
-    font-size: 26px;
+  line-height: 140%;
+  letter-spacing: 1.4%;
+  font-weight: 600;
+  font-family: Poppins, Arial;
+  font-size: 26px;
 }
 
 .text-m {
-    font-family: Poppins, Arial;
-    font-size: 20px;
-    line-height: 140%;
-    letter-spacing: 1.4%;
-    font-weight: 600;
+  font-family: Poppins, Arial;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: 1.4%;
+  font-weight: 600;
 }
 
 .text-s {
-    font-family: Poppins, Arial;
-    font-size: var(--text-s-size);
-    line-height: 158%;
-    letter-spacing: 1.4%;
-    font-weight: 600;
+  font-family: Poppins, Arial;
+  font-size: var(--text-s-size);
+  line-height: 158%;
+  letter-spacing: 1.4%;
+  font-weight: 600;
 }
 
 .text-ss {
-    font-family: Poppins, Arial;
-    font-size: 16px;
-    line-height: 124%;
-    letter-spacing: 1.4%;
-    font-weight: 500;
+  font-family: Poppins, Arial;
+  font-size: 16px;
+  line-height: 124%;
+  letter-spacing: 1.4%;
+  font-weight: 500;
 }
 
 .text-secondary {
-    color: var(--txt-secondary-col);
+  color: var(--txt-secondary-col);
 }
 
 .italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 .underline {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 a {
-    color: var(--txt-secondary-col);
-    font-family: Poppins, Arial;
+  color: var(--txt-secondary-col);
+  font-family: Poppins, Arial;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-
 @media (width < 540px) {
-    h1 {
-        font-size: 36px !important;
-    }
-    h2 { font-size: 32px; }
-    .text-l { font-size: 20px; }
-    .text-m { font-size: 18px; }
-    .text-s { font-size: 16px; }
+  h1 {
+    font-size: 36px !important;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  .text-l {
+    font-size: 20px;
+  }
+  .text-m {
+    font-size: 18px;
+  }
+  .text-s {
+    font-size: 16px;
+  }
 }
