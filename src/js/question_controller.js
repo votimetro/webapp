@@ -361,6 +361,8 @@ class ScrollController extends Controller {
 
   scrollTo(selector, offset) {
     var element = document.querySelector(selector);
+    if (!element) return;
+
     var elementPosition = element.getBoundingClientRect().top;
     var offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -398,6 +400,13 @@ class QuestionController extends Controller {
   connect() {
     this.currentQuestion = 0;
     this.userAnswers = {};
+    // Add keyboard event listener
+    document.addEventListener("keydown", this.handleKeydown.bind(this));
+  }
+
+  disconnect() {
+    // Remove keyboard event listener
+    document.removeEventListener("keydown", this.handleKeydown.bind(this));
   }
 
   init(event) {
@@ -454,6 +463,14 @@ class QuestionController extends Controller {
       this.setQuestion(this.currentQuestion + 1);
       this.setExistingAnswer();
       this.canProceed();
+
+      // Focus the first answer option after navigation
+      setTimeout(() => {
+        const firstOption = this.element.querySelector(".select-btn");
+        if (firstOption) {
+          firstOption.focus();
+        }
+      }, 100); // Small delay to ensure smooth scroll completes
     }
   }
 
@@ -462,6 +479,14 @@ class QuestionController extends Controller {
     if (this.currentQuestion > 0) {
       this.setQuestion(this.currentQuestion - 1);
       this.setExistingAnswer();
+
+      // Focus the first answer option after navigation
+      setTimeout(() => {
+        const firstOption = this.element.querySelector(".select-btn");
+        if (firstOption) {
+          firstOption.focus();
+        }
+      }, 100); // Small delay to ensure smooth scroll completes
     }
   }
 
@@ -633,6 +658,27 @@ class QuestionController extends Controller {
 
     // Enable the next button since we have an answer
     this.nextTarget.removeAttribute("disabled");
+  }
+
+  // Handle keyboard events for answer selection
+  handleKeydown(event) {
+    // Only handle Enter key
+    if (event.key !== "Enter") return;
+
+    // Get the currently focused element
+    const focusedElement = document.activeElement;
+
+    // Check if the focused element is a label
+    if (focusedElement.classList.contains("select-btn")) {
+      // Find the radio input within the label
+      const radioInput = focusedElement.querySelector('input[type="radio"]');
+      if (radioInput) {
+        // Select the radio input
+        radioInput.checked = true;
+        // Trigger the answer event
+        this.answer({ target: radioInput });
+      }
+    }
   }
 
   async loadQuestions() {

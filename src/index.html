@@ -144,18 +144,38 @@
           class="btn nav-button text-s"
           data-controller="scroll"
           data-action="scroll#toQuestion"
+          tabindex="0"
         >
-          <img src="./images/arrow_down.svg" alt="" class="arrow-down" />
           Começar
-          <img src="./images/arrow_down.svg" alt="" class="arrow-down" />
+          <svg
+            class="arrow"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 7.5L10 12.5L15 7.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </button>
       </div>
 
-      <div class="container question-box" data-controller="question">
+      <div
+        class="container question-box"
+        data-controller="question"
+        tabindex="-1"
+      >
         <div class="center" data-question-target="questionCount">
           <div class="question-header">
             <h2>Questão</h2>
-            <div class="question-number center">
+            <div class="question-number center" aria-live="polite">
               <span class="current-number" data-question-target="number"
                 >1</span
               >
@@ -169,6 +189,8 @@
           class="content-box"
           data-question-target="content"
           data-action="question:ready@window->question#init"
+          aria-live="polite"
+          tabindex="0"
         >
           <div class="question-text">
             <div class="category text-ss">
@@ -180,82 +202,128 @@
             </span>
           </div>
 
-          <div class="options">
-            <label class="btn select-btn agree-totally">
+          <div
+            class="options"
+            role="radiogroup"
+            aria-labelledby="question-text"
+          >
+            <label
+              class="btn select-btn agree-totally"
+              tabindex="0"
+              role="radio"
+              aria-checked="false"
+            >
               <input
                 data-action="question#answer"
                 data-question-target="answer"
                 type="radio"
                 name="question"
                 value="2"
+                aria-label="Concordo totalmente com a afirmação"
+                tabindex="-1"
               />
               <span class="text-ss">CONCORDO TOTALMENTE</span>
-              <div class="option-icon">
-                <img src="./images/okhand.svg" />
-                <img src="./images/okhand.svg" />
+              <div class="option-icon" aria-hidden="true">
+                <img src="./images/okhand.svg" alt="" />
+                <img src="./images/okhand.svg" alt="" />
               </div>
             </label>
-            <label class="btn select-btn agree-partially">
+            <label
+              class="btn select-btn agree-partially"
+              tabindex="0"
+              role="radio"
+              aria-checked="false"
+            >
               <input
                 data-action="question#answer"
                 data-question-target="answer"
                 type="radio"
                 name="question"
                 value="1"
+                aria-label="Concordo parcialmente com a afirmação"
+                tabindex="-1"
               />
               <span class="text-ss">CONCORDO PARCIALMENTE</span>
-              <div class="option-icon">
-                <img src="./images/okhand.svg" />
+              <div class="option-icon" aria-hidden="true">
+                <img src="./images/okhand.svg" alt="" />
               </div>
             </label>
-            <label class="btn select-btn neutral">
+            <label
+              class="btn select-btn neutral"
+              tabindex="0"
+              role="radio"
+              aria-checked="false"
+            >
               <input
                 data-action="question#answer"
                 data-question-target="answer"
                 type="radio"
                 name="question"
                 value="0"
+                aria-label="Posição neutra em relação à afirmação"
+                tabindex="-1"
               />
               <span class="text-ss">POSIÇÃO NEUTRA</span>
-              <div class="option-icon"></div>
+              <div class="option-icon" aria-hidden="true"></div>
             </label>
-            <label class="btn select-btn disagree-partially">
+            <label
+              class="btn select-btn disagree-partially"
+              tabindex="0"
+              role="radio"
+              aria-checked="false"
+            >
               <input
                 data-action="question#answer"
                 data-question-target="answer"
                 type="radio"
                 name="question"
                 value="-1"
+                aria-label="Discordo parcialmente da afirmação"
+                tabindex="-1"
               />
               <span class="text-ss">DISCORDO PARCIALMENTE</span>
-              <div class="option-icon">
-                <img src="./images/not_ok_hand.svg" />
+              <div class="option-icon" aria-hidden="true">
+                <img src="./images/not_ok_hand.svg" alt="" />
               </div>
             </label>
-            <label class="btn select-btn disagree-totally">
+            <label
+              class="btn select-btn disagree-totally"
+              tabindex="0"
+              role="radio"
+              aria-checked="false"
+            >
               <input
                 data-action="question#answer"
                 data-question-target="answer"
                 type="radio"
                 name="question"
                 value="-2"
+                aria-label="Discordo totalmente da afirmação"
+                tabindex="-1"
               />
               <span class="text-ss">DISCORDO TOTALMENTE</span>
-              <div class="option-icon">
-                <img src="./images/not_ok_hand.svg" />
-                <img src="./images/not_ok_hand.svg" />
+              <div class="option-icon" aria-hidden="true">
+                <img src="./images/not_ok_hand.svg" alt="" />
+                <img src="./images/not_ok_hand.svg" alt="" />
               </div>
             </label>
-            <label class="btn select-btn no-answer">
+            <label
+              class="btn select-btn no-answer"
+              tabindex="0"
+              role="radio"
+              aria-checked="false"
+            >
               <input
                 data-action="question#answer"
                 data-question-target="answer"
                 type="radio"
                 name="question"
                 value="NaN"
+                aria-label="Prefiro não responder a esta afirmação"
+                tabindex="-1"
               />
               <span class="text-ss">NÃO VOU RESPONDER</span>
-              <div class="option-icon"></div>
+              <div class="option-icon" aria-hidden="true"></div>
             </label>
           </div>
         </div>
@@ -263,9 +331,11 @@
         <div class="navigation">
           <button
             data-question-target="previous"
-            data-action="question#previous"
+            data-action="question#previous scroll#toQuestion"
             class="btn nav-button"
             disabled
+            aria-label="Voltar para a pergunta anterior"
+            tabindex="0"
           >
             <svg
               class="arrow"
@@ -274,6 +344,7 @@
               viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M12.5 15L7.5 10L12.5 5"
@@ -283,15 +354,17 @@
                 stroke-linejoin="round"
               />
             </svg>
-            ANT.
+            Ant.
           </button>
           <button
             data-question-target="next"
-            data-action="question#next"
+            data-action="question#next scroll#toQuestion"
             class="btn nav-button"
             disabled
+            aria-label="Avançar para a próxima pergunta"
+            tabindex="0"
           >
-            PRÓX.
+            Próx.
             <svg
               class="arrow"
               width="20"
@@ -299,6 +372,7 @@
               viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M7.5 5L12.5 10L7.5 15"
