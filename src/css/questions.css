@@ -1,6 +1,11 @@
 .agree-totally {
-  background-color: #83B994;
+  background-color: #83b994;
   color: white;
+  transition: all 0.2s ease;
+}
+
+.agree-totally:hover {
+  background-color: #007024;
 }
 
 .agree-totally:has(input[type="radio"]:checked) {
@@ -10,6 +15,11 @@
 .agree-partially {
   background-color: #c1ca7f;
   color: white;
+  transition: all 0.2s ease;
+}
+
+.agree-partially:hover {
+  background-color: #789400;
 }
 
 .agree-partially:has(input[type="radio"]:checked) {
@@ -17,37 +27,65 @@
 }
 
 .neutral {
-  background-color: #F1D297;
+  background-color: #f1d297;
   color: white;
+  transition: all 0.2s ease;
+}
+
+.neutral:hover {
+  background-color: #f09d00;
 }
 
 .neutral:has(input[type="radio"]:checked) {
-  background-color: #F09D00;
+  background-color: #f09d00;
 }
 
 .disagree-partially {
-  background-color: #FEC08B;
+  background-color: #fec08b;
   color: white;
+  transition: all 0.2s ease;
+}
+
+.disagree-partially:hover {
+  background-color: #fb7400;
 }
 
 .disagree-partially:has(input[type="radio"]:checked) {
-  background-color: #FB7400;
+  background-color: #fb7400;
 }
 
 .disagree-totally {
-  background-color: #F6A89A;
+  background-color: #f6a89a;
   color: white;
+  transition: all 0.2s ease;
+}
+
+.disagree-totally:hover {
+  background-color: #de391c;
 }
 
 .disagree-totally:has(input[type="radio"]:checked) {
-  background-color: #DE391C;
+  background-color: #de391c;
 }
 
 .no-answer {
   background-color: var(--bg-card);
-  border: 2px solid #5D5E65;
-  color: #5D5E65;
+  border: 2px solid #5d5e65;
+  color: #5d5e65;
   margin-top: 16px;
+  transition: all 0.2s ease;
+}
+
+.no-answer:hover {
+  background-color: #5d5e65;
+  color: white;
+  border-color: #5d5e65;
+}
+
+.no-answer:has(input[type="radio"]:checked) {
+  background-color: #5d5e65;
+  color: white;
+  border-color: #5d5e65;
 }
 
 .question-box {
@@ -66,11 +104,45 @@
 }
 
 .nav-button {
-  font-weight: bold;
-  border: 1px solid #333;
-  background-color: transparent;
+  display: flex;
   align-items: center;
   gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background: #333;
+  color: white;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-button:disabled:hover {
+  background: transparent;
+  color: #333;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.nav-button:hover .arrow {
+  transform: scale(1.1);
+}
+
+.nav-button:disabled:hover .arrow {
+  transform: none;
 }
 
 .question-header {
@@ -99,7 +171,7 @@
 }
 
 .content-box {
-  background-color:var(--bg-card);
+  background-color: var(--bg-card);
   border-top-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
   padding: 40px 40px 30px 40px;
@@ -115,8 +187,6 @@
   img.logo {
     width: 150px;
   }
-
-
 
   input[type="radio"] {
     display: none;
@@ -188,6 +258,4 @@
     flex-grow: 1;
     margin: 0 22px !important;
   }
-
-
 }
