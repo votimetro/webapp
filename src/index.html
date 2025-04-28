@@ -31,7 +31,7 @@
     }</script>
 </head>
 
-<body class="">
+<body class="" role="main">
 
     <template id="circle">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -54,20 +54,20 @@
     </template>
 
 
-    <main class="center flex-column">
-        <dialog></dialog>
+    <main class="center flex-column" role="main">
+        <dialog role="dialog" aria-modal="true"></dialog>
 
-        <div class="container fold-box title-box">
+        <div class="container fold-box title-box" role="banner">
             <div class="flex logo">
-                <img src="./images/mark.svg" alt="" class="mark">
+                <img src="./images/mark.svg" alt="Votímetro logo" class="mark">
                 <h1>votímetro</h1>
             </div>
-            <a href="https://github.com/votimetro/webapp" class="github-logo"></a>
+            <a href="https://github.com/votimetro/webapp" class="github-logo" aria-label="GitHub repository"></a>
         </div>
 
-        <div class="container fold-box">
+        <div class="container fold-box" role="region" aria-labelledby="survey-description">
             <div class="blurb">
-                <h2>O seu partido ideal?</h2>
+                <h2 id="survey-description">O seu partido ideal?</h2>
                 <p class="text-m">
                     Este teste visa avaliar o seu posicionamento político e comparar o seu posicionamento em relação aos partidos portugueses. Em cada questão, será confrontado com uma afirmação e será pedido para escolher qual o nível de concordância.
                 </p>
@@ -88,7 +88,7 @@
         </div>
 
         <div class="container fold-box center down-button">
-            <button class="btn nav-button text-s" data-controller="scroll" data-action="scroll#toQuestion">
+            <button class="btn nav-button text-s" data-controller="scroll" data-action="scroll#toQuestion" aria-label="Começar o teste">
                 <img src="./images/arrow_down.svg" alt="" class="arrow-down">
                 Começar
                 <img src="./images/arrow_down.svg" alt="" class="arrow-down">
@@ -96,127 +96,122 @@
         </div>
 
 
-        <div class="container question-box" data-controller="question">
+        <div class="container question-box" data-controller="question" role="form" aria-label="Questionário político">
             <div class="center" data-question-target="questionCount">
                 <div class="question-header">
                     <h2>Questão</h2>
                     <div class="question-number center">
-                        <span class="current-number" data-question-target="number">1</span>
+                        <span class="current-number" data-question-target="number" aria-live="polite">1</span>
                         /
                         <span data-question-target="total_q">24</span>
                     </div>
                 </div>
             </div>
 
-            <div class="content-box" data-question-target="content" data-action="question:ready@window->question#init">
-
+            <div class="content-box" data-question-target="content" data-action="question:ready@window->question#init" role="group" aria-labelledby="question-text">
                 <div class="question-text">
                     <div class="category text-ss">
                         <span data-question-target="type" class="title"></span> -
                         <span data-question-target="theme" class="title"></span>
                     </div>
-                    <span class="text-m" data-question-target="question">
+                    <span class="text-m" data-question-target="question" id="question-text">
                         loading...
                     </span>
                 </div>
 
-                <div class="options">
-                    <label class="btn select-btn agree-totally">
+                <div class="options" role="radiogroup" aria-labelledby="question-text">
+                    <label class="btn select-btn agree-totally" tabindex="0" data-action="keydown.enter->question#handleKeyPress">
                         <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="2">
+                            value="2" aria-label="Concordo totalmente">
                         <span class="text-ss">CONCORDO TOTALMENTE</span>
                         <div class="option-icon">
-                            <img src="./images/okhand.svg">
-                            <img src="./images/okhand.svg">
+                            <img src="./images/okhand.svg" alt="">
+                            <img src="./images/okhand.svg" alt="">
                         </div>
                     </label>
-                    <label class="btn select-btn agree-partially">
+                    <label class="btn select-btn agree-partially" tabindex="0" data-action="keydown.enter->question#handleKeyPress">
                         <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="1">
+                            value="1" aria-label="Concordo parcialmente">
                         <span class="text-ss">CONCORDO PARCIALMENTE</span>
                         <div class="option-icon">
-                            <img src="./images/okhand.svg">
+                            <img src="./images/okhand.svg" alt="">
                         </div>
                     </label>
-                    <label class="btn select-btn neutral">
+                    <label class="btn select-btn neutral" tabindex="0" data-action="keydown.enter->question#handleKeyPress">
                         <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="0">
+                            value="0" aria-label="Posição neutra">
                         <span class="text-ss">POSIÇÃO NEUTRA</span>
                         <div class="option-icon"></div>
                     </label>
-                    <label class="btn select-btn disagree-partially">
+                    <label class="btn select-btn disagree-partially" tabindex="0" data-action="keydown.enter->question#handleKeyPress">
                         <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="-1">
+                            value="-1" aria-label="Discordo parcialmente">
                         <span class="text-ss">DISCORDO PARCIALMENTE</span>
                         <div class="option-icon">
-                            <img src="./images/not_ok_hand.svg">
+                            <img src="./images/not_ok_hand.svg" alt="">
                         </div>
                     </label>
-                    <label class="btn select-btn disagree-totally">
+                    <label class="btn select-btn disagree-totally" tabindex="0" data-action="keydown.enter->question#handleKeyPress">
                         <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="-2">
+                            value="-2" aria-label="Discordo totalmente">
                         <span class="text-ss">DISCORDO TOTALMENTE</span>
                         <div class="option-icon">
-                            <img src="./images/not_ok_hand.svg">
-                            <img src="./images/not_ok_hand.svg">
+                            <img src="./images/not_ok_hand.svg" alt="">
+                            <img src="./images/not_ok_hand.svg" alt="">
                         </div>
                     </label>
-                    <label class="btn select-btn no-answer">
+                    <label class="btn select-btn no-answer" tabindex="0" data-action="keydown.enter->question#handleKeyPress">
                         <input data-action="question#answer question#next" data-question-target="answer" type="radio" name="question"
-                            value="NaN">
+                            value="NaN" aria-label="Não vou responder">
                         <span class="text-ss">NÃO VOU RESPONDER</span>
                         <div class="option-icon"></div>
                     </label>
                 </div>
             </div>
 
-            <div class="navigation">
-                <button data-question-target="previous" data-action="question#previous" class="btn nav-button">
-                    <img src="./images/left_arrow.svg" class="arrow">
+            <div class="navigation" role="navigation">
+                <button data-question-target="previous" data-action="question#previous" class="btn nav-button" aria-label="Questão anterior">
+                    <img src="./images/left_arrow.svg" class="arrow" alt="">
                     ANT.
                 </button>
-                <button data-question-target="next" data-action="question#next" class="btn nav-button">
+                <button data-question-target="next" data-action="question#next" class="btn nav-button" aria-label="Próxima questão">
                     PRÓX.
-                    <img src="./images/right_arrow.svg" class="arrow">
+                    <img src="./images/right_arrow.svg" class="arrow" alt="">
                 </button>
-                <button class="hidden btn nav-button tudo" data-question-target="correctBtn" data-action="question#complete" style="margin-left: 20%;">
-                    <img src="./images/correct.svg">
+                <button class="hidden btn nav-button tudo" data-question-target="correctBtn" data-action="question#complete" style="margin-left: 20%;" aria-label="Finalizar teste">
+                    <img src="./images/correct.svg" alt="">
                     Feito!
                 </button>
 
                 <div data-question-target="complete" class="flex flex-column center auto hidden">
-                    <button class="btn nav-button" data-action="question#takeAllQuestions">
+                    <button class="btn nav-button" data-action="question#takeAllQuestions" aria-label="Fazer o teste completo">
                         Faça o teste completo
-                        <img src="./images/star.svg" class="icon">
+                        <img src="./images/star.svg" class="icon" alt="">
                     </button>
 
-                    <span class="text-s mt-4 btn center" style="gap: 8px;" data-action="click->question#showResults click->scroll#toResults" data-controller="scroll">
+                    <span class="text-s mt-4 btn center" style="gap: 8px;" data-action="click->question#showResults click->scroll#toResults" data-controller="scroll" role="button" tabindex="0">
                         Veja o resultado
-                        <img src="./images/bars.svg" class="icon">
+                        <img src="./images/bars.svg" class="icon" alt="">
                     </span>
                 </div>
             </div>
 
-            <div id="user-results" class="hidden" data-question-target="result">
-
+            <div id="user-results" class="hidden" data-question-target="result" role="region" aria-labelledby="results-title">
                 <div class="center mb-4" style="margin-top: 192px;">
                     <div class="question-header">
-                        <h2>Compatibilidade política</h2>
+                        <h2 id="results-title">Compatibilidade política</h2>
                     </div>
                 </div>
 
                 <div id="party-box"></div>
 
-                <button
-                    class="btn nav-button auto bg-color"
-                    data-action="question#showSharing"
-                >
+                <button class="btn nav-button auto bg-color" data-action="question#showSharing" aria-label="Partilhar resultado">
                     Partilha o resultado
-                    <img src="./images/share.svg">
+                    <img src="./images/share.svg" alt="">
                 </button>
                 <div class="center sharing gap-8">
-                    <a href="">Twitter</a>
-                    <a href="">Facebook</a>
+                    <a href="" aria-label="Partilhar no Twitter">Twitter</a>
+                    <a href="" aria-label="Partilhar no Facebook">Facebook</a>
                 </div>
 
                 <div class="center mb-2 party-table-title">

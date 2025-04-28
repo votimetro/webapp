@@ -578,13 +578,29 @@ class QuestionController extends Controller {
     // Only add to userAnswers if the parsed value is a valid number
     if (!isNaN(parsedValue)) {
       this.userAnswers[this.currentQuestion] = {
-        answer: parseInt(event.target.value),
+        answer: parsedValue,
         index: this.questions[this.currentQuestion].index,
         multiplier: this.questions[this.currentQuestion].multiplier,
         type: this.questions[this.currentQuestion].type
       }
     }
     this.canProceed()
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const radio = event.currentTarget.querySelector('input[type="radio"]');
+      if (radio) {
+        radio.checked = true;
+        const radioEvent = {
+          target: radio,
+          value: radio.value
+        };
+        this.answer(radioEvent);
+        this.next();
+      }
+    }
   }
 
   async loadQuestions() {
