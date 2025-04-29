@@ -506,14 +506,14 @@ class QuestionController extends Controller {
     let body = `Fiz+o+teste+Vot%C3%ADmetro%21+O+meu+partido+mais+pr%C3%B3ximo+foi+${partyName}+%28${percent}%25%29.+Descobre+a+tua+posi%C3%A7%C3%A3o%3A+https%3A%2F%2F${deployedUrl}`
 
     sharing.innerHTML = `
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F${deployedUrl}">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F${deployedUrl}" aria-label="Partilhar no Facebook">
         <img src="./images/facebook.svg">
       </a>
-      <a href="https://wa.me/?text=${body}+https%3A%2F%2F${deployedUrl}"><img src="./images/whatsapp.svg"></a>
+      <a href="https://wa.me/?text=${body}+https%3A%2F%2F${deployedUrl}" aria-label="Partilhar no Whatsapp"><img src="./images/whatsapp.svg"></a>
       <a href="mailto:?subject=${subject}&body=${body}
-"><img src="./images/email.svg"></a>
+" aria-label="Partilhar por Email"><img src="./images/email.svg"></a>
       <a href="https://twitter.com/intent/tweet?text=${body}&hashtags=Votimetro,PoliticaPortuguesa
-"><img src="./images/twitter.svg"></a>
+" aria-label="Partilhar no X (Twitter)"><img src="./images/twitter.svg"></a>
     `
     sharing.classList.add("down")
   }
@@ -578,13 +578,29 @@ class QuestionController extends Controller {
     // Only add to userAnswers if the parsed value is a valid number
     if (!isNaN(parsedValue)) {
       this.userAnswers[this.currentQuestion] = {
-        answer: parseInt(event.target.value),
+        answer: parsedValue,
         index: this.questions[this.currentQuestion].index,
         multiplier: this.questions[this.currentQuestion].multiplier,
         type: this.questions[this.currentQuestion].type
       }
     }
     this.canProceed()
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const radio = event.currentTarget.querySelector('input[type="radio"]');
+      if (radio) {
+        radio.checked = true;
+        const radioEvent = {
+          target: radio,
+          value: radio.value
+        };
+        this.answer(radioEvent);
+        this.next();
+      }
+    }
   }
 
   async loadQuestions() {
