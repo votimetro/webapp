@@ -12,9 +12,10 @@
     </style>
     <link rel="icon" type="image/png" href="./images/favicon/" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="./images/favicon//favicon.svg" />
-    <link rel="shortcut icon" href="./images/favicon//favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon//apple-touch-icon.png" />
-    <link rel="manifest" href="./images/favicon//site.webmanifest" />
+    <link rel="shortcut icon" href="./images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="./images/favicon/site.webmanifest" />
+    <meta name="theme-color" content="#FFE8C2" />
 
     <!-- Social stuff  -->
     <meta property="og:title" content="Votimetro" />
@@ -57,42 +58,46 @@
     <main class="center flex-column" role="main">
         <dialog role="dialog" aria-modal="true"></dialog>
 
-        <div class="container fold-box title-box" role="banner">
-            <div class="flex logo">
-                <img src="./images/mark.svg" alt="Votímetro logo" class="mark">
-                <h1>votímetro</h1>
-            </div>
-            <a href="https://github.com/votimetro/webapp" class="github-logo" aria-label="GitHub repository"></a>
-        </div>
-
-        <div class="container fold-box" role="region" aria-labelledby="survey-description">
-            <div class="blurb">
-                <h2 id="survey-description">O seu partido ideal?</h2>
-                <p class="text-m">
-                    Este teste visa avaliar o seu posicionamento político e comparar o seu posicionamento em relação aos partidos portugueses. Em cada questão, será confrontado com uma afirmação e será pedido para escolher qual o nível de concordância.
-                </p>
-                <p class="text-m mt-1">
-                    Os resultados mostram o posicionamento relativamente aos vários partidos portugueses e o grau de semelhança das resposta em relação a cada partido, medido pela soma dos desvios absolutos em todas as respostas do teste.
-                </p>
-            </div>
-            <div class="shape">
-                <div class="curves">
-                    <div class="red-curve-div"></div>
-                    <img src="./images/blue_curve.svg" class="blue-curve">
+        <div class="hero container">
+            <div class="container fold-box title-box" role="banner">
+                <div class="flex logo">
+                    <img src="./images/mark.svg" alt="Votímetro logo" class="mark">
+                    <h1>votímetro</h1>
                 </div>
-
-                <!-- <div class="blue-curve-div"></div> -->
-
-                <img src="./images/shapes.svg" alt="" class="shape">
+                <a href="https://github.com/votimetro/webapp" class="github-logo" aria-label="GitHub repository"></a>
             </div>
-        </div>
 
-        <div class="container fold-box center down-button">
-            <button class="btn nav-button text-s" data-controller="scroll" data-action="scroll#toQuestion" aria-label="Começar o teste">
-                <img src="./images/arrow_down.svg" alt="" class="arrow-down">
-                Começar
-                <img src="./images/arrow_down.svg" alt="" class="arrow-down">
-            </button>
+            <div class="container fold-box" role="region" aria-labelledby="survey-description">
+                <div class="blurb">
+                    <h2 id="survey-description">O seu partido ideal?</h2>
+                    <p class="text-m mt-4">
+                        Este teste visa avaliar o seu posicionamento político e comparar o seu posicionamento em relação aos partidos portugueses. Em cada questão, será confrontado com uma afirmação e será pedido para escolher qual o nível de concordância.
+                    </p>
+                    <p class="text-m mt-2">
+                        Os resultados mostram o posicionamento relativamente aos vários partidos portugueses e o grau de semelhança das resposta em relação a cada partido, medido pela soma dos desvios absolutos em todas as respostas do teste.
+                    </p>
+                </div>
+                <div class="shape">
+                    <div class="curves">
+                        <div class="red-curve-div"></div>
+                        <img src="./images/blue_curve.svg" class="blue-curve">
+                    </div>
+
+                    <!-- <div class="blue-curve-div"></div> -->
+
+                    <div id="shapes-container">
+                        <img id="shapes-image" src="./images/shapes.svg" alt="" class="shape">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container fold-box center down-button">
+                <button class="btn nav-button text-s" data-controller="scroll" data-action="scroll#toQuestion" aria-label="Começar o teste">
+                    <img src="./images/arrow_down.svg" alt="" class="arrow-down">
+                    Começar
+                    <img src="./images/arrow_down.svg" alt="" class="arrow-down">
+                </button>
+            </div>
         </div>
 
 

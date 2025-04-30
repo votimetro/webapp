@@ -9,6 +9,14 @@
     margin-bottom: 96px;
 }
 
+.hero {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .logo {
     gap: 24px;
     flex-grow: 1;
@@ -32,6 +40,13 @@
     .arrow-down {
         width: 20px;
     }
+}
+
+#shapes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .shape {
