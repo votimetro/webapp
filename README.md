@@ -10,7 +10,7 @@ Partidos incluídos: AD | ADN | BE | Chega | IL | JPP | Livre | Nova Direita | P
 
 O teste inclui os partidos que tiveram mais do que 7000 votos nas eleições legislativas de 2024 (mínimo de assinaturas para a formação de um partido político em Portugal).
 
-As afirmações que compõem o teste visam avaliar a posição relativamente a valores políticos abstratos e intemporais, não a questões especificas da realidade portuguesa em 2025. As afirmações cobrem 3 eixos:
+As afirmações que compõem o teste visam avaliar a posição relativamente a valores políticos abstratos e intemporais, não as questões especificas da realidade portuguesa em 2025. As afirmações cobrem 3 eixos:
 
 *Eixo Económico*: Mede o grau de intervenção geral do Estado na Economia. Espectro Esquerda-Direita.
 

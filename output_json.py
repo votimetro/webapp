@@ -7,7 +7,7 @@ import pandas as pd
 
 def questions_to_json():
     """
-    Converts the questions to json format so that it can be handled by app.
+    Converts the questions to JSON format so that it can be handled by app.
     """
     # Path to the CSV file
     csv_path = "questions.csv"
@@ -20,7 +20,7 @@ def questions_to_json():
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Read CSV and convert to list of dictionaries
+    # Read CSV and convert to a list of dictionaries
     questions = []
 
     try:
@@ -51,7 +51,7 @@ def questions_to_json():
 
 def tuple_to_css_position(x, y):
     """
-    Convert coordinates from (-1, 1) range to CSS position.
+    Convert coordinates from (-1, 1) range to a CSS position.
 
     Parameters:
     x, y: Coordinates in (-1, 1) range where:
@@ -72,7 +72,7 @@ def tuple_to_css_position(x, y):
     # Map y from (1, -1) to (0%, 100%)
     # Note: We invert y because in CSS, top: 0% is the top of the container
     # and top: 100% is the bottom, while in our coordinate system,
-    # y=1 is top and y=-1 is bottom
+    # y=1 is top, and y=-1 is bottom
     top_percent = ((1 - y) / 2) * 100
     top_percent = top_percent - offset
 
