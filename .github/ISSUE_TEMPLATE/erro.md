@@ -25,7 +25,7 @@ assignees: ''
 <!-- Descrever que seria esperado -->
 
 ## Para Erros Relacionados com as Perguntas
-<!-- Completar esta seção para erros de conteúdo nas perguntas -->
+<!-- Completar esta secção para erros de conteúdo nas perguntas -->
 
 ### Pergunta com Erro
 <!-- Indicar o texto da pergunta com erro -->
@@ -34,7 +34,7 @@ assignees: ''
 <!-- Explicar qual é o problema com o conteúdo da pergunta (ex: classificação incorreta, enunciado confuso, opções incompletas, etc.) -->
 
 ### Sugestão de Correção
-<!-- Se possível, sugirir como poderia ser corrigida -->
+<!-- Se possível, sugerir como poderia ser corrigida -->
 
 ## Capturas de Écran
 <!-- Se aplicável, adicionar capturas de écran para ajudar a explicar o problema -->

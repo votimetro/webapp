@@ -98,7 +98,7 @@ function calculatePartyAffinity(userAnswers, partyAnswers, questionIds = null, m
     return {};  // No answers to evaluate
   }
 
-  // Calculate distance between user answers and each party's answers
+  // Calculate the distance between user answers and each party's answers
   const distances = {};
   for (const [partyName, partyPositions] of Object.entries(partyAnswers)) {
     let totalDifference = 0;
@@ -128,7 +128,7 @@ function calculatePartyAffinity(userAnswers, partyAnswers, questionIds = null, m
 }
 
 /**
- * Convert coordinates from (-1, 1) range to CSS position.
+ * Convert coordinates from (-1, 1) range to a CSS position.
  *
  * @param {number} x - X coordinate in (-1, 1) range
  * @param {number} y - Y coordinate in (-1, 1) range
@@ -150,7 +150,7 @@ function tupleToCssPosition(x, y) {
   // Map y from (1, -1) to (0%, 100%)
   // Note: We invert y because in CSS, top: 0% is the top of the container
   // and top: 100% is the bottom, while in our coordinate system,
-  // y=1 is top and y=-1 is bottom
+  // y=1 is top, and y=-1 is bottom
   let topPercent = ((1 - y) / 2) * 100;
   topPercent = topPercent - offset;
 
@@ -163,7 +163,7 @@ function tupleToCssPosition(x, y) {
 
 /**
  * Calculates Economic, Social, and Political scores (-1 to 1) using multipliers.
- * @param {Array} questions - Array of question objects with properties type, multiplier, and answer
+ * @param {Array} questions - Array of question objects with property type, multiplier, and answer
  * @returns {Object} Object containing economic, social, and political scores
  */
 function calculateCompassScores(questions) {
@@ -196,7 +196,7 @@ function calculateCompassScores(questions) {
       return sum + (answer * relevantMultipliers[index]);
     }, 0);
 
-    // Normalize score between -1 and 1
+    // Normalize the score between -1 and 1
     const normalizedScore = weightedScoreSum / (numAnswered * 2.0);
     scores[axisName] = Math.max(-1.0, Math.min(1.0, normalizedScore));
   }
